@@ -11,7 +11,7 @@
       <section>
         <v-container grid-list-xl>
           <v-layout row wrap justify-center class="my-5">
-            <v-carousel hide-delimiters>
+            <v-carousel>
               <v-carousel-item v-for="(item,i) in items" :key="i" :src="item">
               </v-carousel-item>
             </v-carousel>

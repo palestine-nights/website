@@ -1,10 +1,11 @@
 <template>
   <v-parallax :src="image" :height="height">
       <v-layout column align-center justify-center>
-      <div class="display-3 white--text mb-3 text-xs-center ">{{ title }}</div>
-      <div class="display-1 white--text mb-3 text-xs-center">{{ subtitle }}</div>
-          <v-btn class="on-bottom" v-scroll-to="'#description'" large flat icon>
-          <v-icon size="50px">keyboard_arrow_down</v-icon>
+      <div class="display-4 white--text mb-3 text-xs-center">{{ subtitle }}</div>
+
+      <!-- <div class="display- white--text mb-3 text-xs-center text-uppercase">{{ title }}</div> -->
+        <v-btn class="on-bottom" v-scroll-to="'#description'" large flat icon>
+        <v-icon size="50px">keyboard_arrow_down</v-icon>
       </v-btn>
       </v-layout>
   </v-parallax>
