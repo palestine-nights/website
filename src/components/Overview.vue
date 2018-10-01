@@ -3,9 +3,9 @@
         <v-layout column wrap class="my-5" align-center>
           <v-flex xs12 sm4 class="my-3">
             <div class="text-xs-center">
-              <h2 class="headline green--text text-uppercase">{{ title }}</h2>
+              <h2 class="headline green--text text-uppercase"> Authentic palestine cuisine</h2>
               <span class="subheading">
-                At {{ title }} we craft fresh ingredients with best types of arab meet
+                Palestinian heritage carefully crafted to include your tastebuds
               </span>
             </div>
 

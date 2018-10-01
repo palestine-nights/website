@@ -2,7 +2,6 @@
   <v-parallax :src="image" :height="height">
       <v-layout column align-center justify-center>
       <div class="display-4 white--text mb-3 text-xs-center">{{ subtitle }}</div>
-
       <!-- <div class="display- white--text mb-3 text-xs-center text-uppercase">{{ title }}</div> -->
         <v-btn class="on-bottom" v-scroll-to="'#description'" large flat icon>
         <v-icon size="50px">keyboard_arrow_down</v-icon>
