@@ -1,7 +1,7 @@
 
 VERSION     ?= $(shell git describe --tags --abbrev=0 2>/dev/null || echo latest)
-SERVICE     ?= rest-website
-IMAGE       := gcr.io/ashanaakh-dev/$(SERVICE):$(VERSION)
+SERVICE     ?= palestine-nights-website
+IMAGE       := ashanaakh/$(SERVICE):$(VERSION)
 
 .PHONY: default build push run ci deploy secret
 
@@ -12,7 +12,7 @@ build:
 	@docker build -t $(IMAGE) .
 
 push: build
-	gcloud docker -- push $(IMAGE)
+	@docker push $(IMAGE)
 
 run:
 	@echo '> Starting "$(SERVICE)" container...'
