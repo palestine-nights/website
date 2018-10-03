@@ -1,9 +1,8 @@
+VERSION ?= $(shell git describe --tags --abbrev=0 2>/dev/null || echo latest)
+SERVICE ?= palestine-nights-website
+IMAGE   := ashanaakh/$(SERVICE):$(VERSION)
 
-VERSION     ?= $(shell git describe --tags --abbrev=0 2>/dev/null || echo latest)
-SERVICE     ?= palestine-nights-website
-IMAGE       := ashanaakh/$(SERVICE):$(VERSION)
-
-.PHONY: default build push run ci deploy secret
+.PHONY: default build push run
 
 default: build run
 

@@ -5,12 +5,15 @@
         <parallax-bar image="photo-2.jpg" :height="700" :title="title" :subtitle="subtitle"/>
       </section>
 
-      <overview>
-      </overview>
+      <div id="description"></div>
+
+      <section>
+        <overview></overview>
+      </section>
 
       <section>
         <v-container grid-list-xl>
-          <v-layout row wrap justify-center class="my-5">
+          <v-layout row wrap justify-center class="my-2">
             <v-carousel>
               <v-carousel-item v-for="(item,i) in items" :key="i" :src="item">
               </v-carousel-item>
@@ -27,7 +30,7 @@
             <v-flex xs12 sm4 offset-sm1>
               <v-card class="elevation-0 transparent">
                 <v-card-title primary-title class="layout justify-center">
-                  <div class="headline green--text  a">Contact us</div>
+                  <div class="headline green--text">Contact us</div>
                 </v-card-title>
                 <v-list class="transparent">
                   <v-list-tile>
@@ -68,10 +71,8 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-
 import ParallaxBar from './components/ParallaxBar.vue';
-import Overview from './components/Overview.vue'
+import Overview from './components/Overview.vue';
 import PageFooter from './components/PageFooter.vue';
 
 export default {

@@ -1,4 +1,4 @@
-# website
+# Palestine Nights Restaurant Website
 
 ## Project setup
 ```

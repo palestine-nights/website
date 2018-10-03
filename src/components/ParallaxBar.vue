@@ -1,12 +1,11 @@
 <template>
   <v-parallax :src="image" :height="height">
-      <v-layout column align-center justify-center>
+    <v-layout column align-center justify-center>
       <div class="display-4 white--text mb-3 text-xs-center">{{ subtitle }}</div>
-      <!-- <div class="display- white--text mb-3 text-xs-center text-uppercase">{{ title }}</div> -->
-        <v-btn class="on-bottom" v-scroll-to="'#description'" large flat icon>
-        <v-icon size="50px">keyboard_arrow_down</v-icon>
+      <v-btn class="arrow bounce" v-scroll-to="'#description'" large flat icon>
+        <v-icon size="4rem">keyboard_arrow_down</v-icon>
       </v-btn>
-      </v-layout>
+    </v-layout>
   </v-parallax>
 </template>
 
@@ -30,14 +29,6 @@ export default {
       required: false
     },
     /*
-    * Query to scroll on button click.
-    */
-    scrollTo: {
-      type: String,
-      default: "#description",
-      required: false
-    },
-    /*
     * Title string.
     */
     title: {
@@ -58,17 +49,23 @@ export default {
 </script>
 
 <style>
-.on-bottom {
-  position: absolute !important;
-  bottom: 1rem;
-  animation: MoveUpDown 1s linear infinite;
+@keyframes bounce {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 20px, 0);
+  }
 }
-@keyframes MoveUpDown {
-  0%, 100% {
-    bottom: 0;
-  }
-  50% {
-    bottom: 10px;
-  }
+
+.bounce {
+  animation: bounce 0.7s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.arrow {
+  position: absolute !important;
+  bottom: 1.5rem;
 }
 </style>

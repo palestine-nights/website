@@ -1,18 +1,15 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import VueScrollTo from 'vue-scrollto'
-
 import App from './App.vue'
-
-Vue.config.productionTip = false
 
 import 'vuetify/dist/vuetify.min.css'
 
-Vue.use(VueScrollTo)
+Vue.config.productionTip = false
 
-Vue.use(
-  Vuetify, { iconfont: 'md' }
-)
+// TODO: Merge this.
+Vue.use(VueScrollTo, { duration: 1500 })
+Vue.use(Vuetify, { iconfont: 'md' })
 
 new Vue({
   render: h => h(App)
