@@ -24,10 +24,13 @@
 
       <section>
         <v-container grid-list-xl>
-          <v-layout row wrap justify-center class="my-5">
-            <v-flex xs12 sm4>
+          <v-layout row wrap justify-center class="my-2">
+            <v-flex xs12 sm12 md6>
+              <google-map :apiKey="apiKey" :latitude="coordinates.latitude"
+                          :longitude="coordinates.longitude" :zoom="14">
+              </google-map>
             </v-flex>
-            <v-flex xs12 sm4 offset-sm1>
+            <v-flex xs12 sm12 md5 offset-md1>
               <v-card class="elevation-0 transparent">
                 <v-card-title primary-title class="layout justify-center">
                   <div class="headline green--text">Contact us</div>
@@ -74,6 +77,7 @@
 import ParallaxBar from './components/ParallaxBar.vue';
 import Overview from './components/Overview.vue';
 import PageFooter from './components/PageFooter.vue';
+import GoogleMap from './components/GoogleMap.vue';
 
 export default {
   name: "app",
@@ -81,7 +85,7 @@ export default {
     ParallaxBar,
     Overview,
     PageFooter,
-    HelloWorld
+    GoogleMap
   },
   data: function() {
     return {
@@ -91,6 +95,8 @@ export default {
       email: "help@palestinenights.com",
       place: "Al Muharraq, Bahrain",
       items: ["photo-1.jpg", "photo-3.jpg", "photo-4.jpg", "photo-5.jpg"],
+      apiKey: "AIzaSyB_EjQmuych_DPv4Ffrs0T6AcdR2F4Xtlc",
+      coordinates: { latitude: 26.279457, longitude: 50.595937 }
     };
   }
 };
