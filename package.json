@@ -10,6 +10,7 @@
   "dependencies": {
     "google-maps": "^3.3.0",
     "vue": "^2.5.17",
+    "vue-carousel": "^0.14.0",
     "vue-instagram": "^2.0.1",
     "vue-scrollto": "^2.13.0",
     "vuetify": "^1.2.0"

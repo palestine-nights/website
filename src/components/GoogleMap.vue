@@ -18,7 +18,7 @@ export default {
     },
     zoom: {
       type: Number,
-      default: 14,
+      default: 20,
       required: false
     },
     apiKey: {
@@ -55,15 +55,17 @@ export default {
         center: place
       });
 
-      var marker = new google.maps.Marker({
-        position: place,
-        map: map,
-        title: 'Palestine Nights Restaurant'
-      });
+      // if (false) {
+        var marker = new google.maps.Marker({
+          position: place,
+          map: map,
+          title: 'Palestine Nights Restaurant'
+        });
 
-      if (markerAnimationEnabled) {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-      }
+        if (markerAnimationEnabled) {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+      // }
     });
   }
 }
@@ -71,7 +73,6 @@ export default {
 
 <style>
 #map {
-  /* display: inherit; */
   height: 400px;
   min-width: 100%;
 }

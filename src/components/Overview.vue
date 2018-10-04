@@ -1,16 +1,14 @@
 <template>
-  <v-layout column wrap class="my-5" align-center>
-    <v-flex xs12 sm4 class="my-3">
-      <div class="text-xs-center">
-        <h2 class="headline green--text text-uppercase"> Authentic palestine cuisine</h2>
-        <span class="subheading">
-          Palestinian heritage carefully crafted to include your tastebuds
-        </span>
-      </div>
-    </v-flex>
 
-    <v-flex xs12>
-      <v-container grid-list-xl>
+  <v-layout column>
+    <v-container>
+      <v-layout align-center justify-center class="my-3">
+        <div class="text-xs-center">
+          <h2 class="headline green--text text-uppercase">Authentic palestine cuisine</h2>
+          <div class="subheading my-1">Palestinian heritage carefully crafted to include your tastebud</div>
+        </div>
+      </v-layout>
+      <v-flex xs12>
         <v-divider color="darkgreen"></v-divider>
         <v-layout row wrap align-center>
           <v-flex xs18 md6>
@@ -44,19 +42,13 @@
             </v-card>
           </v-flex>
         </v-layout>
-      </v-container>
-    </v-flex>
+      </v-flex>
+    </v-container>
   </v-layout>
 </template>
 
 <script>
 export default {
-  name: "Overview",
-  data: function() {
-    return {
-      title: "Palestine nights restaurant",
-      subtitle: "‎مطعم ليالي فلسطين",
-    };
-  }
+  name: 'Overview'
 };
 </script>

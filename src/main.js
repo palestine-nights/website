@@ -7,7 +7,6 @@ import 'vuetify/dist/vuetify.min.css'
 
 Vue.config.productionTip = false
 
-// TODO: Merge this.
 Vue.use(VueScrollTo, { duration: 1500 })
 Vue.use(Vuetify, { iconfont: 'md' })
 

@@ -35,9 +35,9 @@ export default {
   },
   data: function () {
     return {
-      token: "37266272.e372b6e.140b4817cda3462e8c3c67b6eff6bf13",
+      token: '37266272.e372b6e.140b4817cda3462e8c3c67b6eff6bf13',
       count: 3,
-      mediaType: "image"
+      mediaType: 'image'
     }
   },
 }
