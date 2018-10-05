@@ -12,6 +12,22 @@
 <script>
 export default {
   name: "ParallaxBar",
+  mounted() {
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize)
+  },
+  methods: {
+    handleResize(event) {
+      this.height = document.documentElement.clientHeight;
+    }
+  },
+  data() {
+    return {
+      height: document.documentElement.clientHeight
+    }
+  },
   props: {
     /*
     * Path to image.
@@ -19,14 +35,6 @@ export default {
     image: {
       type: String,
       required: true
-    },
-    /*
-    * ParallaxBar height.
-    */
-    height: {
-      type: Number,
-      default: 700,
-      required: false
     },
     /*
     * Title string.

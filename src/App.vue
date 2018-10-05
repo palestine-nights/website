@@ -2,7 +2,7 @@
   <v-app dark>
     <v-content>
       <section>
-        <parallax-bar image="photo-2.jpg" :height="700" :title="title" :subtitle="subtitle"/>
+        <parallax-bar image="photo-2.jpg" :title="title" :subtitle="subtitle"/>
       </section>
 
       <div id="scrollTo"></div>
