@@ -55,7 +55,6 @@ export default {
         center: place
       });
 
-      // if (false) {
         var marker = new google.maps.Marker({
           position: place,
           map: map,
@@ -65,7 +64,6 @@ export default {
         if (markerAnimationEnabled) {
           marker.setAnimation(google.maps.Animation.BOUNCE);
         }
-      // }
     });
   }
 }
