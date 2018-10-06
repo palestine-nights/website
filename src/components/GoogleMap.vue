@@ -41,6 +41,8 @@ export default {
     var place = { lat: this.latitude, lng: this.longitude };
     var markerAnimationEnabled = this.markerAnimationEnabled;
 
+    console.log(process.env)
+
     if (this.apiVersion) {
       GoogleMapsLoader.VERSION = this.apiVersion;
     }
