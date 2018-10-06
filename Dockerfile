@@ -12,7 +12,7 @@ RUN yarn build
 
 FROM node:alpine
 
-RUN yarn add global http-server
+RUN npm i -g http-server
 
 COPY --from=builder /app/dist/ /dist
 
