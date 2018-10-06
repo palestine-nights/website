@@ -2,7 +2,7 @@
   <v-parallax :src="image" :height="height">
     <v-layout column align-center justify-center>
       <div class="display-4 white--text mb-3 text-xs-center">{{ subtitle }}</div>
-      <v-btn class="arrow bounce" v-scroll-to="'#scrollTo'" large flat icon>
+      <v-btn class="arrow bounce" v-scroll-to="'#scrollTo'" large flat icon v-on:click="arrowClicked">
         <v-icon size="4rem">keyboard_arrow_down</v-icon>
       </v-btn>
     </v-layout>
@@ -19,8 +19,14 @@ export default {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
-    handleResize(event) {
+    handleResize() {
       this.height = document.documentElement.clientHeight;
+    },
+    arrowClicked() {
+      this.$ga.event({
+        eventCategory: 'arrow',
+        eventAction: 'pressed',
+      })
     }
   },
   data() {
