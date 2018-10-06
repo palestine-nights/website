@@ -11,9 +11,9 @@ Vue.config.productionTip = false
 
 // TODO: Add description of VUE_APP_GOOGLE_ANALYTICS_ID.
 const analyticsID = process.env.VUE_APP_GOOGLE_ANALYTICS_ID
-// const googleMapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY
-// const environment = process.env.NODE_ENV
-// const isProd = environment === 'production'
+// TODO: Add description of VUE_APP_GOOGLE_MAPS_API_KEY.
+Vue.prototype.$mapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY
+
 
 Vue.use(VueScrollTo, {
   duration: 1500
@@ -35,3 +35,6 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
+// TODO: Add description of VUE_APP_GOOGLE_MAPS_API_KEY.
+Vue.prototype.$mapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY
