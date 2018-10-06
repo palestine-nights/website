@@ -18,15 +18,6 @@ export default {
     return {
       year: new Date().getFullYear(),
       icons: []
-      //   {
-      //     icon: 'fab fa-facebook',
-      //     link: 'https://www.facebook.com/palestine.nights.restaurant/'
-      //   },
-      //   {
-      //     icon: 'fab fa-instagram',
-      //     link: 'https://www.instagram.com/palestine_nights_restaurant'
-      //   }
-      // ]
     };
   }
 };
