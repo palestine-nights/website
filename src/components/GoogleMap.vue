@@ -37,32 +37,32 @@ export default {
     }
   },
   mounted: function () {
-    var zoom = this.zoom;
-    var place = { lat: this.latitude, lng: this.longitude };
-    var markerAnimationEnabled = this.markerAnimationEnabled;
+    var zoom = this.zoom
+    var place = { lat: this.latitude, lng: this.longitude }
+    var markerAnimationEnabled = this.markerAnimationEnabled
 
     if (this.apiVersion) {
-      GoogleMapsLoader.VERSION = this.apiVersion;
+      GoogleMapsLoader.VERSION = this.apiVersion
     }
 
     if (this.apiKey) {
-      GoogleMapsLoader.KEY = this.apiKey;
+      GoogleMapsLoader.KEY = this.apiKey
     }
 
     GoogleMapsLoader.load(function(google) {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: zoom,
         center: place
-      });
+      })
 
         var marker = new google.maps.Marker({
           position: place,
           map: map,
           title: 'Palestine Nights Restaurant'
-        });
+        })
 
         if (markerAnimationEnabled) {
-          marker.setAnimation(google.maps.Animation.BOUNCE);
+          marker.setAnimation(google.maps.Animation.BOUNCE)
         }
     });
   }

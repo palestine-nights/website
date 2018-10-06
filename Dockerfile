@@ -12,10 +12,10 @@ RUN yarn build
 
 FROM node:alpine
 
-RUN npm install -g http-server
+RUN npm i -g http-server
 
 COPY --from=builder /app/dist/ /dist
 
 EXPOSE 8080
 
-CMD ["http-server", "dist"]
+CMD ["http-server", "--gzip", "dist"]

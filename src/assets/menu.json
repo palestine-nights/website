@@ -1,30 +1,30 @@
 [
   {
-    "image": "https://www.ukmoths.org.uk/site/templates/includes/images/noimageyet420.png",
+    "image": "./no-image.jpg",
     "title": "Fattoush",
     "description": "Refreshing mixture of hand-picked vegetables, mouthwatering seasoning, fried bread and pomegranate.",
     "price": "1,750"
   },
   {
-    "image": "https://www.ukmoths.org.uk/site/templates/includes/images/noimageyet420.png",
+    "image": "./no-image.jpg",
     "title": "Green Salad",
     "description": "Fresh zesty mixture of vegetables ready to please even the most picky customer.",
     "price": " 1,750"
   },
   {
-    "image": "https://www.ukmoths.org.uk/site/templates/includes/images/noimageyet420.png",
+    "image": "./no-image.jpg",
     "title": "Jarjeer Salad",
     "description": "Rocca salad with tomato, onion and pomegranate, seasoned with lemon, olive oil and pomegranate syrop.",
     "price": "1,750"
   },
   {
-    "image": "https://www.ukmoths.org.uk/site/templates/includes/images/noimageyet420.png",
+    "image": "./no-image.jpg",
     "title": "Tabbouleh",
     "description": "Chopped parsley, spring onions, crashed wheat and tomato seasoned with our special tabboula sauce to indulge your taste buds.",
     "price": "1,500"
   },
   {
-    "image": "https://www.ukmoths.org.uk/site/templates/includes/images/noimageyet420.png",
+    "image": "./no-image.jpg",
     "title": "Mansaf",
     "description": "Rice and arabic meat, almonds and savoury yougurt carefully prepared with oldest family recipes. Accompanied by jameed soup.",
     "price": "4,500"
