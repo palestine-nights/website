@@ -15,4 +15,4 @@ push: build
 
 run:
 	@echo '> Starting "$(SERVICE)" container...'
-	@docker run -d --name $(SERVICE) -p 8080:8080 $(IMAGE)
+	@docker run -d --name $(SERVICE) -p 8080:80 $(IMAGE)

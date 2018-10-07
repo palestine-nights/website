@@ -10,12 +10,14 @@ COPY . .
 
 RUN yarn build
 
-FROM node:alpine
+FROM nginx:alpine
 
-RUN npm i -g http-server
+COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY ./config/gzip.conf /etc/nginx/conf.d/gzip.conf
+
+RUN nginx -t
 
 COPY --from=builder /app/dist/ /dist
 
 EXPOSE 8080
-
-CMD ["http-server", "dist"]
