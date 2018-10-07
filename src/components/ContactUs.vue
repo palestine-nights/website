@@ -25,11 +25,6 @@ export default {
   name: 'ContactUs',
   data() {
     return {
-      phone: '‎+9737774768',
-      email: 'palestinenights@gmail.com',
-      workingHours: "10:00 - 23:00",
-      place: 'Bahrain, Al Muharraq',
-      address: 'Palestine Nights Restaurant',
       rows: [
         {
           icon: 'phone',
@@ -42,13 +37,9 @@ export default {
           text: 'palestinenights@gmail.com'
         },
         {
-          icon: 'place',
-          link: 'comgooglemaps://?q=Palestine Nights Restaurant',
-          text: 'Bahrain, Al Muharraq'
-        },
-        {
-          icon: 'access_time',
-          text: '10:00 - 23:00'
+          icon: 'fab fa-instagram',
+          link: 'https://www.instagram.com/palestine_nights_restaurant',
+          text: '@palestine_nights_restaurant'
         },
         {
           icon: 'fab fa-facebook',
@@ -56,9 +47,13 @@ export default {
           text: '@palestine.nights.restaurant'
         },
         {
-          icon: 'fab fa-instagram',
-          link: 'https://www.instagram.com/palestine_nights_restaurant',
-          text: '@palestine_nights_restaurant'
+          icon: 'place',
+          link: 'comgooglemaps://?q=Palestine Nights Restaurant',
+          text: 'Bahrain, Al Muharraq'
+        },
+        {
+          icon: 'access_time',
+          text: '10:00 - 23:00'
         }
       ]
     }

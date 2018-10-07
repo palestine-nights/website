@@ -47,16 +47,14 @@ export default {
     */
     title: {
       type: String,
-      default: 'Title',
-      required: false
+      required: true
     },
     /*
     * Subtitle string.
     */
     subtitle: {
       type: String,
-      default: 'Subtitle',
-      required: false
+      required: true
     }
   }
 };
