@@ -62,7 +62,7 @@ export default {
   },
   data() {
     return {
-      items: ['photo-1.jpg', 'photo-2.jpg', 'photo-3.jpg'],
+      items: ['./photo-1.jpg', './photo-2.jpg', './photo-3.jpg'],
       apiKey: this.$mapsApiKey,
       coordinates: {
         latitude: 26.27944,

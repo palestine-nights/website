@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <section>
-      <parallax-bar image="background.jpg" :title="title" :subtitle="subtitle"/>
+      <parallax-bar image="./background.jpg" :title="title" :subtitle="subtitle"/>
     </section>
     <router-view></router-view>
     <page-footer></page-footer>
