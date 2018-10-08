@@ -1,5 +1,9 @@
 <template>
   <v-content>
+    <section>
+      <parallax-bar image="./background.jpg" :title="title" :subtitle="subtitle"/>
+    </section>
+
     <div id="scrollTo"></div>
 
     <section>
@@ -47,6 +51,7 @@
 </template>
 
 <script>
+import ParallaxBar from '../components/ParallaxBar.vue'
 import Overview from '../components/Overview.vue'
 import GoogleMap from '../components/GoogleMap.vue'
 import MenuBar from '../components/MenuBar.vue'
@@ -55,6 +60,7 @@ import ContactUs from '../components/ContactUs.vue'
 export default {
   name: 'Home',
   components: {
+    ParallaxBar,
     Overview,
     GoogleMap,
     MenuBar,
@@ -62,6 +68,8 @@ export default {
   },
   data() {
     return {
+      title: 'Palestine nights restaurant',
+      subtitle: '‎مطعم ليالي فلسطين',
       items: ['./photo-1.jpg', './photo-2.jpg', './photo-3.jpg'],
       apiKey: this.$mapsApiKey,
       coordinates: {
