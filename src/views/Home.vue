@@ -1,7 +1,7 @@
 <template>
   <v-content>
     <section>
-      <parallax-bar image="./background.jpg" :title="title" :subtitle="subtitle"/>
+      <parallax-bar image="./background.jpg"/>
     </section>
 
     <div id="scrollTo"></div>
@@ -21,11 +21,11 @@
       </v-container>
     </section>
 
-    <section id="m">
+    <section>
       <v-container>
         <v-layout justify-center>
           <div class="text-xs-center">
-            <h2 class="my-2 headline text-uppercase">MOST POPULAR MEALS</h2>
+            <h2 class="my-2 headline text-uppercase">{{ $t('message.topMeals') }}</h2>
             <v-divider color="darkgreen"></v-divider>
           </div>
         </v-layout>
@@ -68,8 +68,6 @@ export default {
   },
   data() {
     return {
-      title: 'Palestine nights restaurant',
-      subtitle: '‎مطعم ليالي فلسطين',
       items: ['./photo-1.jpg', './photo-2.jpg', './photo-3.jpg'],
       apiKey: this.$mapsApiKey,
       coordinates: {

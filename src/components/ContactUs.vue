@@ -1,7 +1,7 @@
 <template>
   <v-card class="elevation-0 transparent">
     <v-card-title primary-title class="layout justify-center">
-      <div class="headline green--text">Contact us</div>
+      <div class="headline green--text">{{ $t('message.contactUs') }}</div>
     </v-card-title>
 
     <v-list class="transparent">

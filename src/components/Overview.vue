@@ -4,8 +4,8 @@
     <v-container>
       <v-layout align-center justify-center class="my-3">
         <div class="text-xs-center">
-          <h2 class="headline green--text text-uppercase">Authentic palestine cuisine</h2>
-          <div class="subheading my-1">Palestinian heritage carefully crafted to include your tastebud</div>
+          <h2 class="headline green--text text-uppercase">{{ $t('message.overview.title') }}</h2>
+          <div class="subheading my-1">{{ $t('message.overview.subtitle') }}</div>
         </div>
       </v-layout>
       <v-flex xs12>
@@ -17,13 +17,9 @@
                 <v-icon x-large class="green--text">restaurant_menu</v-icon>
               </v-card-text>
               <v-card-title primary-title class="layout justify-center">
-                <div class="headline text-xs-center">Unique recipes</div>
+                <div class="headline text-xs-center">{{ $t('message.overview.texts[0].name') }}</div>
               </v-card-title>
-              <v-card-text>
-                Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-              </v-card-text>
+              <v-card-text>{{ $t('message.overview.texts[0].text') }}</v-card-text>
             </v-card>
           </v-flex>
           <v-flex xs18 md6>
@@ -32,13 +28,9 @@
                 <v-icon x-large class="green--text">local_florist</v-icon>
               </v-card-text>
               <v-card-title primary-title class="layout justify-center">
-                <div class="headline">Best ingredients</div>
+                <div class="headline">{{ $t('message.overview.texts[1].name') }}</div>
               </v-card-title>
-              <v-card-text>
-                Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-              </v-card-text>
+              <v-card-text>{{ $t('message.overview.texts[1].text') }}</v-card-text>
             </v-card>
           </v-flex>
         </v-layout>

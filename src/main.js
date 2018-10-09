@@ -3,6 +3,7 @@ import Vuetify from 'vuetify'
 import VueScrollTo from 'vue-scrollto'
 import VueAnalytics from 'vue-analytics'
 import App from './App.vue'
+import VueI18n from 'vue-i18n'
 import router from './router'
 
 import 'vuetify/dist/vuetify.min.css'
@@ -15,6 +16,7 @@ const analyticsID = process.env.VUE_APP_GOOGLE_ANALYTICS_ID
 // TODO: Add description of VUE_APP_GOOGLE_MAPS_API_KEY.
 Vue.prototype.$mapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY
 
+Vue.use(VueI18n)
 
 Vue.use(VueScrollTo, {
   duration: 1500
@@ -32,10 +34,18 @@ Vue.use(VueAnalytics, {
   }
 })
 
+const messages = {
+  en: require('./locales/en.json'),
+  ar: require('./locales/ar.json')
+}
+
+const i18n = new VueI18n({
+  locale: 'en',
+  messages
+})
+
 new Vue({
+  i18n,
   router,
   render: h => h(App)
 }).$mount('#app')
-
-// TODO: Add description of VUE_APP_GOOGLE_MAPS_API_KEY.
-Vue.prototype.$mapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY
