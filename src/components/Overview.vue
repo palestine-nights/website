@@ -10,6 +10,14 @@
       </v-layout>
       <v-flex xs12>
         <v-divider color="darkgreen"></v-divider>
+        <v-layout column align-center>
+            <v-rating v-model="rating"
+                      half-increments
+                      readonly
+                      color="green">
+            </v-rating>
+            <span class="font-weight-thin grey--text">Google Maps: {{ rating }}</span>
+          </v-layout>
         <v-layout row wrap align-center>
           <v-flex xs18 md6>
             <v-card class="elevation-0 transparent">
@@ -41,6 +49,11 @@
 
 <script>
 export default {
-  name: 'Overview'
+  name: 'Overview',
+  data() {
+    return {
+      rating: 4.5
+    }
+  }
 };
 </script>
