@@ -7,7 +7,7 @@
     <div id="scrollTo"></div>
 
     <section>
-      <overview></overview>
+      <overview :apiKey="apiKey"></overview>
     </section>
 
     <section>

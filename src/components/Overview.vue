@@ -10,14 +10,19 @@
       </v-layout>
       <v-flex xs12>
         <v-divider color="darkgreen"></v-divider>
-        <v-layout column align-center>
-            <v-rating v-model="rating"
-                      half-increments
-                      readonly
-                      color="green">
-            </v-rating>
-            <span class="font-weight-thin grey--text">Google Maps: {{ rating }}</span>
-          </v-layout>
+        <v-layout v-if="loading" class="my-2" column align-center>
+          <v-progress-circular :width="2" color="blue-grey" indeterminate></v-progress-circular>
+        </v-layout>
+        <v-layout v-if="!errored && !loading" id="rating" column align-center>
+          <v-rating v-model="rating"
+                    half-increments
+                    readonly
+                    color="green"
+                    background-color="green"
+                    >
+          </v-rating>
+          <span class="font-weight-thin grey--text">Google Maps: {{ rating }}</span>
+        </v-layout>
         <v-layout row wrap align-center>
           <v-flex xs18 md6>
             <v-card class="elevation-0 transparent">
@@ -48,11 +53,40 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Overview',
+  props: {
+    apiKey: {
+      type: String,
+      required: false
+    },
+    apiVersion: {
+      type: String,
+      default: '3.33',
+      required: false
+    }
+  },
+  mounted: function () {
+    this.placesHost = require('../config').placesHost
+
+    axios.get(this.placesHost + '?placeid=' + this.placeID + '&key=' + this.apiKey)
+      .then(response => {
+        this.rating = response.data.rating
+      })
+      .catch(error => {
+        this.error = error
+        this.errored = true
+      })
+      .finally(() => this.loading = false)
+  },
   data() {
     return {
-      rating: 4.5
+      placeID: 'ChIJm8XlftWlST4RbuKXY7a7xzY',
+      rating: 0,
+      loading: true,
+      errored: false
     }
   }
 };
