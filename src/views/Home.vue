@@ -71,8 +71,8 @@ export default {
       items: ['./photo-1.jpg', './photo-2.jpg', './photo-3.jpg'],
       apiKey: this.$mapsApiKey,
       coordinates: {
-        latitude: 26.27944,
-        longitude: 50.595942,
+        latitude: 26.279451,
+        longitude: 50.595940,
       }
     };
   }
