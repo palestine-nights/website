@@ -18,32 +18,24 @@
                     half-increments
                     readonly
                     color="green"
-                    background-color="green"
-                    >
+                    background-color="green">
           </v-rating>
-          <span class="font-weight-thin grey--text">Google Maps: {{ rating }}</span>
+          <span class="caption font-weight-thin grey--text">Google Maps: {{ rating }}</span>
         </v-layout>
-        <v-layout row wrap align-center>
-          <v-flex xs18 md6>
+        <v-layout  align-center justify-center>
+          <v-flex xs18 md10>
             <v-card class="elevation-0 transparent">
               <v-card-text class="text-xs-center">
-                <v-icon x-large class="green--text">restaurant_menu</v-icon>
+                <v-icon x-large class="green--text">restaurant</v-icon>
               </v-card-text>
-              <v-card-title primary-title class="layout justify-center">
-                <div class="headline text-xs-center">{{ $t('message.overview.texts[0].name') }}</div>
-              </v-card-title>
-              <v-card-text>{{ $t('message.overview.texts[0].text') }}</v-card-text>
-            </v-card>
-          </v-flex>
-          <v-flex xs18 md6>
-            <v-card class="elevation-0 transparent">
+
+              <v-card-text class="font-weight-light">{{ $t('message.overview.texts[0].text') }}</v-card-text>
+
               <v-card-text class="text-xs-center">
-                <v-icon x-large class="green--text">local_florist</v-icon>
+                <v-icon x-large class="green--text">place</v-icon>
               </v-card-text>
-              <v-card-title primary-title class="layout justify-center">
-                <div class="headline">{{ $t('message.overview.texts[1].name') }}</div>
-              </v-card-title>
-              <v-card-text>{{ $t('message.overview.texts[1].text') }}</v-card-text>
+
+               <v-card-text class="font-weight-light">{{ $t('message.overview.texts[1].text') }}</v-card-text>
             </v-card>
           </v-flex>
         </v-layout>

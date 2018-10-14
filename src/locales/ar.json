@@ -6,13 +6,12 @@
         "overview": {
             "title": "Authentic palestine cuisine",
             "subtitle": "Palestinian heritage carefully crafted to include your tastebud",
-            "texts": [{
-                    "name": "Unique recipes",
-                    "text": "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti."
+            "texts": [
+                {
+                    "text": "This is how I feel in Palestine Nights Restaurant. I sit on the balcony, smelling the taste of freshly brewed tea with maramiya, like my grandmother used to prepare it, sipping delightfully, taking in it’s rich aroma and eating bite by bite my traditional breakfast - Manqooshe with Zaatar or white Cheese and listening to Palestinian music: sound of Oud that reminds me of my father when I was just a child... Or maybe it would be a dinner or lunch, when I can take some Eggplant Maqloobah or Musakhan, or anything else that would remind me of my family gatherings, eating and laughting together with my beloved."
                 },
                 {
-                    "name": "Best ingredients",
-                    "text": "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti."
+                    "text": "Let me invite you to this world of Palestinian harmony, where you can forget the outside world and transfer to my grand-grandfathers house in Taitaba, North Palestine, which I have never visited but, by now, managed to take hundreds of people there, inviting them to spend some time in our restaurant. Palestine Nights calming atmosphere, rich and tasty food and friendly staff are the combination that lets you feel at home."
                 }
             ]
         }
