@@ -2,8 +2,9 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import VueScrollTo from 'vue-scrollto'
 import VueAnalytics from 'vue-analytics'
-import App from './App.vue'
 import VueI18n from 'vue-i18n'
+
+import App from './App.vue'
 import router from './router'
 
 import 'vuetify/dist/vuetify.min.css'

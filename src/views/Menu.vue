@@ -1,21 +1,18 @@
 <template>
   <v-content>
-    <section>
-      <v-container>
-        <v-expansion-panel>
-          <v-expansion-panel-content v-for="(key,value,i) in menu" :key="i">
-            <div class="text-capitalize" slot="header">{{ value }}</div>
-              <div v-for="(el,j) in key" :key="j">
-                <div class="text-capitalize" slot="header">{{ el.title }}</div>
-                <v-card>
-                  <v-img height="14rem" :src="el.image"></v-img>
-                  <v-card-text>{{ el.description }}</v-card-text>
-                </v-card>
-              </div>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-container>
-    </section>
+    <v-container>
+      <v-flex>
+        <v-card v-for="(info,key) in categories" :key="key" class="elevation-0 transparent">
+          <v-card-title primary-title>
+            <div>
+              <h3 class="headline mb-0 text-capitalize">
+                <a :href="info.link">{{ key }}</a>
+              </h3>
+            </div>
+          </v-card-title>
+        </v-card>
+      </v-flex>
+    </v-container>
   </v-content>
 </template>
 
@@ -24,24 +21,22 @@ export default {
   name: "Menu",
   data() {
     return {
-      menu: {
-        soups: [
-          {
-            image: "./photo-1.jpg",
-            title: "Adas soup",
-            description: "",
-            price: "2000"
-          },
-          {
-            image: "./photo-1.jpg",
-            title: "Vegetable soup",
-            description: "",
-            price: "2000"
-          }
-        ],
-        salads: []
+      categories: {
+        soups: {
+          link: '/menu/soups/'
+        },
+        salads: {
+          link: '/menu/salads/'
+        },
+        appetizers: {
+          link: '/menu/appetizers/'
+        },
       }
     };
   }
 };
 </script>
+
+<style>
+
+</style>

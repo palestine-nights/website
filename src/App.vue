@@ -10,6 +10,9 @@ import PageFooter from './components/PageFooter.vue'
 
 export default {
   name: 'App',
+  mounted() {
+    console.log(this.$route.query.lang)
+  },
   components: {
     PageFooter
   }
