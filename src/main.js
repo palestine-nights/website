@@ -1,53 +1,65 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-import VueScrollTo from 'vue-scrollto'
-import VueAnalytics from 'vue-analytics'
-import App from './App.vue'
-import VueI18n from 'vue-i18n'
-import router from './router'
+import 'vuetify/dist/vuetify.min.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 
-import 'vuetify/dist/vuetify.min.css'
-import '@fortawesome/fontawesome-free/css/all.css'
+import Vue from 'vue';
+import Vuetify from 'vuetify';
+import VueScrollTo from 'vue-scrollto';
+import VueAnalytics from 'vue-analytics';
+import VueI18n from 'vue-i18n';
 
-Vue.config.productionTip = false
+import App from './App.vue';
+import router from './router';
 
-// TODO: Add description of VUE_APP_GOOGLE_ANALYTICS_ID.
-const analyticsID = process.env.VUE_APP_GOOGLE_ANALYTICS_ID
-// TODO: Add description of VUE_APP_GOOGLE_MAPS_API_KEY.
-Vue.prototype.$mapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY
-// TODO: Add description of VUE_APP_GOOGLE_MAPS_PLACES_API_KEY.
-Vue.prototype.$placesApiKey = process.env.VUE_APP_GOOGLE_MAPS_PLACES_API_KEY
+import EngLocale from './locales/en.json';
+import ArLocale from './locales/ar.json';
 
-Vue.use(VueI18n)
+Vue.config.productionTip = false;
+
+/**
+ * VUE_APP_GOOGLE_ANALYTICS_ID - ID of your Google Analytics project.
+ */
+const analyticsID = process.env.VUE_APP_GOOGLE_ANALYTICS_ID;
+
+/**
+ * VUE_APP_GOOGLE_MAPS_API_KEY - Google Maps API_KEY with access maps API.
+ */
+Vue.prototype.$mapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
+
+/**
+ * VUE_APP_GOOGLE_MAPS_PLACES_API_KEY - Google Maps API_KEY with access places API.
+ */
+Vue.prototype.$placesApiKey = process.env.VUE_APP_GOOGLE_MAPS_PLACES_API_KEY;
+
+Vue.use(VueI18n);
 
 Vue.use(VueScrollTo, {
-  duration: 1500
-})
+  duration: 1500,
+});
 
 Vue.use(Vuetify, {
-  iconfont: 'md'
-})
+  iconfont: 'md',
+});
 
 Vue.use(VueAnalytics, {
   id: analyticsID,
   router,
   autoTracking: {
-    exception: true
-  }
-})
+    exception: true,
+  },
+});
 
 const messages = {
-  en: require('./locales/en.json'),
-  ar: require('./locales/ar.json')
-}
+  en: EngLocale,
+  ar: ArLocale,
+};
 
 const i18n = new VueI18n({
   locale: 'en',
-  messages
-})
+  messages,
+});
 
 new Vue({
   i18n,
   router,
-  render: h => h(App)
-}).$mount('#app')
+  render: h => h(App),
+}).$mount('#app');

@@ -1,10 +1,14 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
-import Home from '../views/Home.vue'
-// import Menu from '../views/Menu.vue'
+import Home from '../views/Home.vue';
+import Menu from '../views/Menu.vue';
 
-Vue.use(Router)
+import AppetizersMenu from '../views/AppetizersMenu.vue';
+import SaladsMenu from '../views/SaladsMenu.vue';
+import SoupsMenu from '../views/SoupsMenu.vue';
+
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
@@ -13,12 +17,31 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
     },
-    // {
-      // path: '/menu',
-      // name: 'Menu',
-      // component: Menu
-    // }
-  ]
-})
+    {
+      path: '/menu/',
+      name: 'menu',
+      component: Menu,
+    },
+    {
+      path: '/menu/appetizers',
+      name: 'appetizers',
+      component: AppetizersMenu,
+    },
+    {
+      path: '/menu/soups',
+      name: 'soups',
+      component: SoupsMenu,
+    },
+    {
+      path: '/menu/salads',
+      name: 'salads',
+      component: SaladsMenu,
+    },
+    {
+      path: '*',
+      redirect: '/',
+    },
+  ],
+});

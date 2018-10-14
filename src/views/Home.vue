@@ -51,11 +51,11 @@
 </template>
 
 <script>
-import ParallaxBar from '../components/ParallaxBar.vue'
-import Overview from '../components/Overview.vue'
-import GoogleMap from '../components/GoogleMap.vue'
-import MenuBar from '../components/MenuBar.vue'
-import ContactUs from '../components/ContactUs.vue'
+import ParallaxBar from '../components/ParallaxBar.vue';
+import Overview from '../components/Overview.vue';
+import GoogleMap from '../components/GoogleMap.vue';
+import MenuBar from '../components/MenuBar.vue';
+import ContactUs from '../components/ContactUs.vue';
 
 export default {
   name: 'Home',
@@ -64,7 +64,7 @@ export default {
     Overview,
     GoogleMap,
     MenuBar,
-    ContactUs
+    ContactUs,
   },
   data() {
     return {
@@ -74,8 +74,8 @@ export default {
       coordinates: {
         latitude: 26.279451,
         longitude: 50.595940,
-      }
+      },
     };
-  }
+  },
 };
 </script>

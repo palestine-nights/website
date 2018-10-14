@@ -29,34 +29,34 @@ export default {
         {
           icon: 'phone',
           link: 'tel:+9737774768',
-          text: '+9737774768'
+          text: '+9737774768',
         },
         {
           icon: 'email',
           link: 'mailto:palestinenights@gmail.com',
-          text: 'palestinenights@gmail.com'
+          text: 'palestinenights@gmail.com',
         },
         {
           icon: 'fab fa-instagram',
           link: 'https://www.instagram.com/palestine_nights_restaurant',
-          text: '@palestine_nights_restaurant'
+          text: '@palestine_nights_restaurant',
         },
         {
           icon: 'fab fa-facebook',
           link: 'https://www.facebook.com/palestine.nights.restaurant',
-          text: '@palestine.nights.restaurant'
+          text: '@palestine.nights.restaurant',
         },
         {
           icon: 'place',
           link: 'comgooglemaps://?q=Palestine Nights Restaurant',
-          text: 'Bahrain, Al Muharraq'
+          text: 'Bahrain, Al Muharraq',
         },
         {
           icon: 'access_time',
-          text: '10:00 - 23:00'
-        }
-      ]
-    }
-  }
-}
+          text: '10:00 - 23:00',
+        },
+      ],
+    };
+  },
+};
 </script>

@@ -22,29 +22,29 @@ export default {
     image: {
       type: String,
       default: 'example.jpg',
-      required: false
+      required: false,
     },
     imageAspectRatio: {
       type: Number,
       default: 2.75,
-      required: false
+      required: false,
     },
     title: {
       type: String,
       default: 'Example',
-      required: false
+      required: false,
     },
     description: {
       type: String,
       default: 'Food',
-      required: false
+      required: false,
     },
     price: {
       type: String,
       default: '10$',
-      required: false
-    }
-  }
+      required: false,
+    },
+  },
 };
 </script>
 
