@@ -7,7 +7,7 @@
     <div id="scrollTo"></div>
 
     <section>
-      <overview :apiKey="apiKey"></overview>
+      <overview :apiKey="placesApiKey"></overview>
     </section>
 
     <section>
@@ -70,6 +70,7 @@ export default {
     return {
       items: ['./photo-1.jpg', './photo-2.jpg', './photo-3.jpg'],
       apiKey: this.$mapsApiKey,
+      placesApiKey: this.$placesApiKey,
       coordinates: {
         latitude: 26.279451,
         longitude: 50.595940,

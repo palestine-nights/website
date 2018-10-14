@@ -15,6 +15,8 @@ Vue.config.productionTip = false
 const analyticsID = process.env.VUE_APP_GOOGLE_ANALYTICS_ID
 // TODO: Add description of VUE_APP_GOOGLE_MAPS_API_KEY.
 Vue.prototype.$mapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY
+// TODO: Add description of VUE_APP_GOOGLE_MAPS_PLACES_API_KEY.
+Vue.prototype.$placesApiKey = process.env.VUE_APP_GOOGLE_MAPS_PLACES_API_KEY
 
 Vue.use(VueI18n)
 
