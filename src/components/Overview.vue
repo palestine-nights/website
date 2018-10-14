@@ -71,7 +71,12 @@ export default {
   mounted: function () {
     this.placesHost = require('../config').placesHost
 
-    axios.get(this.placesHost + '?placeid=' + this.placeID + '&key=' + this.apiKey)
+    axios.get(this.placesHost + '?placeid=' + this.placeID,
+    {
+      headers: {
+        Authorization: this.apiKey
+      }
+    })
       .then(response => {
         this.rating = response.data.rating
       })
