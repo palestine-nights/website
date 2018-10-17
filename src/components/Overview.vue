@@ -29,13 +29,17 @@
                 <v-icon x-large class="green--text">restaurant</v-icon>
               </v-card-text>
 
-              <v-card-text class="font-weight-light">{{ $t('message.overview.texts[0].text') }}</v-card-text>
+              <v-card-text class="font-weight-light">
+                {{ $t('message.overview.texts[0].text') }}
+              </v-card-text>
 
               <v-card-text class="text-xs-center">
                 <v-icon x-large class="green--text">place</v-icon>
               </v-card-text>
 
-               <v-card-text class="font-weight-light">{{ $t('message.overview.texts[1].text') }}</v-card-text>
+              <v-card-text class="font-weight-light">
+                {{ $t('message.overview.texts[1].text') }}
+              </v-card-text>
             </v-card>
           </v-flex>
         </v-layout>
@@ -45,46 +49,48 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   name: 'Overview',
   props: {
     apiKey: {
       type: String,
-      required: false
+      required: false,
     },
     apiVersion: {
       type: String,
       default: '3.33',
-      required: false
-    }
+      required: false,
+    },
   },
-  mounted: function () {
-    this.placesHost = require('../config').placesHost
+  mounted() {
+    this.placesHost = require('../config').placesHost;
 
-    axios.get(this.placesHost + '?placeid=' + this.placeID,
-    {
-      headers: {
-        Authorization: this.apiKey
-      }
-    })
-      .then(response => {
-        this.rating = response.data.rating
+    axios.get(
+      `${this.placesHost}?placeid=${this.placeID}`,
+      {
+        headers: {
+          Authorization: this.apiKey,
+        },
+      },
+    )
+      .then((response) => {
+        this.rating = response.data.rating;
       })
-      .catch(error => {
-        this.error = error
-        this.errored = true
+      .catch((error) => {
+        this.error = error;
+        this.errored = true;
       })
-      .finally(() => this.loading = false)
+      .finally(() => { this.loading = false; });
   },
   data() {
     return {
       placeID: 'ChIJm8XlftWlST4RbuKXY7a7xzY',
       rating: 0,
       loading: true,
-      errored: false
-    }
-  }
+      errored: false,
+    };
+  },
 };
 </script>

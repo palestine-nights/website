@@ -14,11 +14,11 @@
 <script>
 export default {
   name: 'PageFooter',
-  data: function() {
+  data() {
     return {
       year: new Date().getFullYear(),
-      icons: []
+      icons: [],
     };
-  }
+  },
 };
 </script>

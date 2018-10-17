@@ -2,7 +2,7 @@
   <v-parallax :src="image" :height="height">
     <v-layout column align-center justify-center>
       <div class="display-4 white--text mb-3 text-xs-center">{{ $t('message.title') }}</div>
-      <v-btn class="arrow bounce" v-scroll-to="'#scrollTo'" large flat icon v-on:click="arrowClicked">
+      <v-btn class="arrow bounce" large flat icon v-on:click="arrowClicked">
         <v-icon size="55px">keyboard_arrow_down</v-icon>
       </v-btn>
     </v-layout>
@@ -11,12 +11,12 @@
 
 <script>
 export default {
-  name: "ParallaxBar",
+  name: 'ParallaxBar',
   mounted() {
-    window.addEventListener('resize', this.handleResize)
+    window.addEventListener('resize', this.handleResize);
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.handleResize);
   },
   methods: {
     handleResize() {
@@ -26,13 +26,14 @@ export default {
       this.$ga.event({
         eventCategory: 'arrow',
         eventAction: 'pressed',
-      })
-    }
+      });
+    },
   },
   data() {
     return {
-      height: document.documentElement.clientHeight
-    }
+      height: document.documentElement.clientHeight,
+      selector: '#scrollTo',
+    };
   },
   props: {
     /*
@@ -40,9 +41,14 @@ export default {
     */
     image: {
       type: String,
-      required: true
+      required: true,
+      options: {
+        duration: 999,
+        easing: 'easeOutQuad',
+        offset: -100,
+      },
     },
-  }
+  },
 };
 </script>
 

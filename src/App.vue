@@ -1,20 +1,28 @@
 <template>
   <v-app dark>
-    <router-view></router-view>
-    <page-footer></page-footer>
+   <transition name="fade">
+      <router-view></router-view>
+  </transition>
+  <page-footer></page-footer>
   </v-app>
 </template>
 
 <script>
-import PageFooter from './components/PageFooter.vue'
+import PageFooter from './components/PageFooter.vue';
 
 export default {
   name: 'App',
-  mounted() {
-    console.log(this.$route.query.lang)
-  },
   components: {
-    PageFooter
-  }
-}
+    PageFooter,
+  },
+};
 </script>
+
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>

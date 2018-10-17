@@ -1,14 +1,14 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
-import Home from '../views/Home.vue'
-import Menu from '../views/Menu.vue'
+import Home from '../views/Home.vue';
+import Menu from '../views/Menu.vue';
 
-import AppetizersMenu from '../views/AppetizersMenu.vue'
-import SaladsMenu     from '../views/SoupsMenu.vue'
-import SoupsMenu      from '../views/SoupsMenu.vue'
+import AppetizersMenu from '../views/AppetizersMenu.vue';
+import SaladsMenu from '../views/SaladsMenu.vue';
+import SoupsMenu from '../views/SoupsMenu.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
@@ -16,29 +16,32 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'home',
+      component: Home,
     },
     {
       path: '/menu/',
-      name: 'Menu',
-      component: Menu
+      name: 'menu',
+      component: Menu,
     },
     {
       path: '/menu/appetizers',
-      component: AppetizersMenu
+      name: 'appetizers',
+      component: AppetizersMenu,
     },
     {
       path: '/menu/soups',
-      component: SoupsMenu
+      name: 'soups',
+      component: SoupsMenu,
     },
     {
       path: '/menu/salads',
-      component: SaladsMenu
+      name: 'salads',
+      component: SaladsMenu,
     },
     {
       path: '*',
-      redirect: '/'
-    }
-  ]
-})
+      redirect: '/',
+    },
+  ],
+});

@@ -1,13 +1,15 @@
 <template>
   <v-content>
     <v-container>
-      <v-flex>
-        <v-card v-for="(info,key) in categories" :key="key" class="elevation-0 transparent">
-          <v-card-title primary-title>
+      <v-flex v-for="(info,key) in categories" :key="key">
+        <v-card tile>
+          <v-card-title>
             <div>
-              <h3 class="headline mb-0 text-capitalize">
-                <a :href="info.link">{{ key }}</a>
-              </h3>
+              <router-link tag="span"
+                           class="headline mb-0 text-capitalize"
+                           :to="info.link">
+              {{ key }}
+              </router-link>
             </div>
           </v-card-title>
         </v-card>
@@ -18,22 +20,22 @@
 
 <script>
 export default {
-  name: "Menu",
+  name: 'Menu',
   data() {
     return {
       categories: {
         soups: {
-          link: '/menu/soups/'
+          link: '/menu/soups/',
         },
         salads: {
-          link: '/menu/salads/'
+          link: '/menu/salads/',
         },
         appetizers: {
-          link: '/menu/appetizers/'
+          link: '/menu/appetizers/',
         },
-      }
+      },
     };
-  }
+  },
 };
 </script>
 
