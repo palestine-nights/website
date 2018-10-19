@@ -10,13 +10,24 @@ import VueI18n from 'vue-i18n';
 import App from './App.vue';
 import router from './router';
 
+import EngLocale from './locales/en.json';
+import ArLocale from './locales/ar.json';
+
 Vue.config.productionTip = false;
 
-// TODO: Add description of VUE_APP_GOOGLE_ANALYTICS_ID.
+/**
+ * VUE_APP_GOOGLE_ANALYTICS_ID - ID of your Google Analytics project.
+ */
 const analyticsID = process.env.VUE_APP_GOOGLE_ANALYTICS_ID;
-// TODO: Add description of VUE_APP_GOOGLE_MAPS_API_KEY.
+
+/**
+ * VUE_APP_GOOGLE_MAPS_API_KEY - Google Maps API_KEY with access maps API.
+ */
 Vue.prototype.$mapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
-// TODO: Add description of VUE_APP_GOOGLE_MAPS_PLACES_API_KEY.
+
+/**
+ * VUE_APP_GOOGLE_MAPS_PLACES_API_KEY - Google Maps API_KEY with access places API.
+ */
 Vue.prototype.$placesApiKey = process.env.VUE_APP_GOOGLE_MAPS_PLACES_API_KEY;
 
 Vue.use(VueI18n);
@@ -38,8 +49,8 @@ Vue.use(VueAnalytics, {
 });
 
 const messages = {
-  en: require('./locales/en.json'),
-  ar: require('./locales/ar.json'),
+  en: EngLocale,
+  ar: ArLocale,
 };
 
 const i18n = new VueI18n({

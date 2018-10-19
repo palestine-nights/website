@@ -16,7 +16,9 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
+
 import MenuItem from '../components/MenuItem.vue';
+import MenuContent from '../assets/menu.json';
 
 export default {
   name: 'MenuBar',
@@ -28,7 +30,7 @@ export default {
   },
   data() {
     return {
-      meals: require('../assets/menu.json'),
+      meals: MenuContent,
       scrollPerItem: true,
     };
   },

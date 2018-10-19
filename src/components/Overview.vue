@@ -50,6 +50,7 @@
 
 <script>
 import axios from 'axios';
+import config from '../config';
 
 export default {
   name: 'Overview',
@@ -65,7 +66,7 @@ export default {
     },
   },
   mounted() {
-    this.placesHost = require('../config').placesHost;
+    this.placesHost = config.placesHost;
 
     axios.get(
       `${this.placesHost}?placeid=${this.placeID}`,
