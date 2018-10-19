@@ -23,7 +23,7 @@
           <span class="caption font-weight-thin grey--text">Google Maps: {{ rating }}</span>
         </v-layout>
         <v-layout  align-center justify-center>
-          <v-flex xs18 md10>
+          <v-flex md12>
             <v-card class="elevation-0 transparent">
               <v-card-text class="text-xs-center">
                 <v-icon x-large class="green--text">restaurant</v-icon>
