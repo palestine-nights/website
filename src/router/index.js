@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Home from '../views/Home.vue';
-import Menu from '../views/Menu.vue';
+import HomeView from '../views/HomeView.vue';
+import MenuView from '../views/MenuView.vue';
 
-import AppetizersMenu from '../views/AppetizersMenu.vue';
-import SaladsMenu from '../views/SaladsMenu.vue';
-import SoupsMenu from '../views/SoupsMenu.vue';
+import AppetizersMenuView from '../views/AppetizersMenuView.vue';
+import SaladsMenuView from '../views/SaladsMenuView.vue';
+import SoupsMenuView from '../views/SoupsMenuView.vue';
 
 Vue.use(Router);
 
@@ -17,27 +17,27 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: HomeView,
     },
     {
       path: '/menu/',
       name: 'menu',
-      component: Menu,
+      component: MenuView,
     },
     {
       path: '/menu/appetizers',
       name: 'appetizers',
-      component: AppetizersMenu,
+      component: AppetizersMenuView,
     },
     {
       path: '/menu/soups',
       name: 'soups',
-      component: SoupsMenu,
+      component: SoupsMenuView,
     },
     {
       path: '/menu/salads',
       name: 'salads',
-      component: SaladsMenu,
+      component: SaladsMenuView,
     },
     {
       path: '*',

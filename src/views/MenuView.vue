@@ -2,15 +2,13 @@
   <v-content>
     <v-container>
       <v-flex v-for="(info,key) in categories" :key="key">
-        <v-card tile>
+        <v-card :to="info.link" class="with-bottom-offset">
           <v-card-title>
-            <div>
-              <router-link tag="span"
-                           class="headline mb-0 text-capitalize"
-                           :to="info.link">
-              {{ key }}
-              </router-link>
-            </div>
+            <span class="headline mb-0 text-capitalize">{{ key }}</span>
+             <v-spacer></v-spacer>
+            <v-icon large>
+              keyboard_arrow_right
+            </v-icon>
           </v-card-title>
         </v-card>
       </v-flex>
@@ -40,5 +38,7 @@ export default {
 </script>
 
 <style>
-
+.with-bottom-offset {
+  margin-bottom: 0.5rem;
+}
 </style>
