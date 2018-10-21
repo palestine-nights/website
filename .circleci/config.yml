@@ -1,0 +1,76 @@
+# CircleCI configuration file for VueJS project.
+# @author - Ali Shanaakh.
+#
+
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10-stretch
+    parallelism: 1
+    working_directory: ~/website
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: "yarn install"
+      - save_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Build assets
+          command: "yarn build"
+  lint:
+    docker:
+      - image: circleci/node:10-stretch
+    parallelism: 1
+    working_directory: ~/website
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: "yarn install"
+      - save_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Lint code
+          command: "yarn lint"
+  push:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Login in Dockerhub
+          command: "docker login -u $DOCKER_USER -p $DOCKER_PASSWORD"
+      - run:
+          name: Build docker image
+          command: |
+            docker build -t palestinenights/website:$CIRCLE_BRANCH .
+            docker build -t palestinenights/website .
+      - run:
+          name: Push docker images
+          command: |
+            docker push palestinenights/website:$CIRCLE_BRANCH
+            docker push palestinenights/website
+
+workflows:
+  version: 2
+  build-and-lint:
+    jobs:
+      - build
+      - lint:
+          requires:
+            - build
+      - push:
+          requires:
+            - lint
+          filters:
+            branches:
+              only: master
