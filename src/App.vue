@@ -1,9 +1,7 @@
 <template>
   <v-app dark>
-   <transition>
-      <router-view></router-view>
-  </transition>
-  <page-footer></page-footer>
+    <router-view></router-view>
+    <page-footer></page-footer>
   </v-app>
 </template>
 

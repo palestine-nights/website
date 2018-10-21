@@ -1,13 +1,14 @@
 <template>
   <v-container>
     <carousel :perPageCustom="[[280, 1], [600, 2], [1000, 3], [1260, 4]]"
-              paginationColor="#6e7177"
-              paginationActiveColor="#ffffff">
+              :paginationColor="paginationColor"
+              :paginationActiveColor="paginationActiveColor">
       <slide v-for="(m,i) in meals" :key="i">
         <menu-item :title="m.title"
                    :price="m.price"
                    :image="m.image"
-                   :description="m.description">
+                   :description="m.description"
+                   :height="height">
         </menu-item>
       </slide>
     </carousel>
@@ -45,14 +46,13 @@ export default {
     return {
       meals: this.getMenu(),
       scrollPerItem: true,
+      paginationColor: '#6e7177',
+      paginationActiveColor: '#ffffff',
+      height: '28rem',
     };
   },
 };
 </script>
 
 <style>
-.v-card {
-  margin-left: 0.3rem;
-  margin-right: 0.3rem;
-}
 </style>
