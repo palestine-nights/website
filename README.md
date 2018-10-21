@@ -1,26 +1,25 @@
-# Palestine Nights Restaurant Website
+# Website
 
-## Project setup
-```
-yarn install
-```
+> Landing page & Menu viewer
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+Website for Palestine Nights Restaurant written in pure [VueJS](https://vuejs.org/).
 
-### Compiles and minifies for production
-```
-yarn run build
+## Usage
+
+Install dependencies
+
+```sh
+$> yarn install
 ```
 
-### Run your tests
-```
-yarn run test
+Start development server
+
+```sh
+$> yarn run serve
 ```
 
-### Lints and fixes files
-```
-yarn run lint
+Compile for production build
+
+```sh
+$> yarn run build
 ```
