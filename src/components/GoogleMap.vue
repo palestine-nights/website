@@ -32,8 +32,11 @@ export default {
     },
   },
   mounted() {
-    const zoom = this.zoom;
-    const place = { lat: this.latitude, lng: this.longitude };
+    const { zoom } = this;
+    const place = {
+      lat: this.latitude,
+      lng: this.longitude,
+    };
 
     if (this.apiVersion) {
       GoogleMapsLoader.VERSION = this.apiVersion;
@@ -49,7 +52,8 @@ export default {
         center: place,
       });
 
-      const marker = new google.maps.Marker({
+      // eslint-disable-next-line
+      new google.maps.Marker({
         position: place,
         map,
         title: 'Palestine Nights Restaurant',
