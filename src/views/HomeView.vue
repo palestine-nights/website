@@ -1,5 +1,10 @@
 <template>
   <v-content>
+    <v-toolbar class="transparent" absolute color="elevation-0">
+      <v-btn round flat to="menu">
+        <span class="font-weight-light headline">Menu</span>
+      </v-btn>
+    </v-toolbar>
     <section>
       <parallax-bar image="./background.jpg"/>
     </section>
@@ -79,3 +84,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.menu-icon {
+  position: absolute;
+}
+</style>
