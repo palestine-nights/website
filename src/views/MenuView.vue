@@ -1,10 +1,10 @@
 <template>
   <v-content>
     <v-container>
-      <v-flex v-for="(info,key) in categories" :key="key">
-        <v-card :to="info.link" class="with-bottom-offset">
+      <v-flex v-for="(category,id) in categories" :key="id">
+        <v-card :to="category.link" class="with-bottom-offset">
           <v-card-title>
-            <span class="headline mb-0 text-capitalize">{{ key }}</span>
+            <span class="headline mb-0 text-capitalize">{{ category.name }}</span>
              <v-spacer></v-spacer>
             <v-icon large>
               keyboard_arrow_right
@@ -21,17 +21,28 @@ export default {
   name: 'Menu',
   data() {
     return {
-      categories: {
-        soups: {
+      categories: [
+        {
+          name: 'Main Dishes',
+          link: '/menu/main-dishes',
+        },
+        {
+          name: 'Soups',
           link: '/menu/soups/',
         },
-        salads: {
+        {
+          name: 'Salads',
           link: '/menu/salads/',
         },
-        appetizers: {
+        {
+          name: 'Appetizers',
           link: '/menu/appetizers/',
         },
-      },
+        {
+          name: 'Drinks',
+          link: '/menu/drinks/',
+        },
+      ],
     };
   },
 };

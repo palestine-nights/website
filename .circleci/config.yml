@@ -69,7 +69,6 @@ jobs:
             docker push palestinenights/website:$CIRCLE_SHA1
             docker push palestinenights/website
 
-
 workflows:
   version: 2
   build-and-lint:
