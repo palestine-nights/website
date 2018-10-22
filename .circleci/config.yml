@@ -60,12 +60,15 @@ jobs:
           name: Build docker image
           command: |
             docker build -t palestinenights/website:$CIRCLE_BRANCH .
+            docker build -t palestinenights/website:$CIRCLE_SHA1 .
             docker build -t palestinenights/website .
       - run:
           name: Push docker images
           command: |
             docker push palestinenights/website:$CIRCLE_BRANCH
+            docker push palestinenights/website:$CIRCLE_SHA1
             docker push palestinenights/website
+
 
 workflows:
   version: 2
