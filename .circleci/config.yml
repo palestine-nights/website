@@ -68,6 +68,17 @@ jobs:
             docker push palestinenights/website:$CIRCLE_BRANCH
             docker push palestinenights/website:$CIRCLE_SHA1
             docker push palestinenights/website
+  deploy:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name:
+          command: |
+            ssh root@139.59.41.7 -- "cd platform && \
+                                     docker-compose down && \
+                                     docker-compose pull && \
+                                     docker-compose up -d"
 
 workflows:
   version: 2
@@ -80,6 +91,12 @@ workflows:
       - push:
           requires:
             - lint
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
+            - push
           filters:
             branches:
               only: master
