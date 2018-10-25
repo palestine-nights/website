@@ -1,15 +1,15 @@
 <template>
-  <v-card height="28rem">
+  <v-card class="menu-top-item" :height="height">
     <v-img height="14rem" :src="image" :aspect-ratio="imageAspectRatio">
     </v-img>
 
-    <div class="menu-item-price">
+    <div class="menu-top-item-price">
       {{ price }}
     </div>
 
     <v-card-title class="justify-center">
       <div class="headline text-xs-center font-weight-bold my-2">{{ title }}</div>
-      <div class="font-italic">{{ description }}</div>
+      <div v-if="description" class="font-italic">{{ description }}</div>
     </v-card-title>
 
   </v-card>
@@ -22,34 +22,37 @@ export default {
     image: {
       type: String,
       default: 'example.jpg',
-      required: false
+      required: false,
     },
     imageAspectRatio: {
       type: Number,
       default: 2.75,
-      required: false
+      required: false,
     },
     title: {
       type: String,
       default: 'Example',
-      required: false
+      required: false,
     },
     description: {
       type: String,
-      default: 'Food',
-      required: false
+      required: false,
     },
     price: {
       type: String,
       default: '10$',
-      required: false
-    }
-  }
+      required: false,
+    },
+    height: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
 
 <style>
-.menu-item-price {
+.menu-top-item-price {
   height: 30px;
   width: 80px;
   margin: auto;
@@ -60,5 +63,10 @@ export default {
   font-size: 14px;
   font-weight: 500;
   line-height: 30px;
+}
+
+.menu-top-item {
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
 }
 </style>
