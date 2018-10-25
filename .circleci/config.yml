@@ -73,7 +73,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name:
+          name: Deploy to DigitalOcean
           command: |
             ssh root@139.59.41.7 -- "cd platform && \
                                      docker-compose down && \
