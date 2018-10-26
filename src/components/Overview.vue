@@ -13,15 +13,21 @@
         <v-layout v-if="loading" class="my-2" column align-center>
           <v-progress-circular :width="2" color="blue-grey" indeterminate></v-progress-circular>
         </v-layout>
+
         <v-layout v-if="!errored && !loading" id="rating" column align-center>
-          <v-rating v-model="rating"
+          <v-card column align-center class="transparent text-xs-center"
+                  :href="linkToGoogleMaps"
+                  color="elevation-0">
+            <v-rating v-model="rating"
                     half-increments
                     readonly
                     color="green"
                     background-color="green">
-          </v-rating>
-          <span class="caption font-weight-thin grey--text">Google Maps: {{ rating }}</span>
+            </v-rating>
+            <span class="caption font-weight-thin grey--text">Google Maps: {{ rating }}</span>
+          </v-card>
         </v-layout>
+
         <v-layout  align-center justify-center>
           <v-flex md12>
             <v-card class="elevation-0 transparent">
@@ -91,6 +97,7 @@ export default {
       rating: 0,
       loading: true,
       errored: false,
+      linkToGoogleMaps: 'https://maps.google.com/?q=Palestine+Nights+Restaurant',
     };
   },
 };

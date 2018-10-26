@@ -42,7 +42,7 @@ export default new Router({
       component: SaladsMenuView,
     },
     {
-      name: 'Salads Menu',
+      name: 'Drinks Menu',
       path: '/menu/drinks',
       component: DrinksMenuView,
     },
