@@ -24,7 +24,9 @@
                     color="green"
                     background-color="green">
             </v-rating>
-            <span class="caption font-weight-thin grey--text">Google Maps: {{ rating }}</span>
+            <span class="caption font-weight-thin grey--text">
+              Google Maps: {{ rating | round }}
+            </span>
           </v-card>
         </v-layout>
 
@@ -99,6 +101,9 @@ export default {
       errored: false,
       linkToGoogleMaps: 'https://maps.google.com/?q=Palestine+Nights+Restaurant',
     };
+  },
+  filters: {
+    round: value => value.toFixed(1),
   },
 };
 </script>
