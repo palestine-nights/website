@@ -1,10 +1,11 @@
 <template>
   <v-parallax :src="image" :height="height">
     <v-layout column align-center justify-center>
-      <div class="display-4 white--text mb-3 text-xs-center">{{ $t('message.title') }}</div>
-      <v-btn class="arrow bounce" v-scroll-to="'#scrollTo'" v-on:click="arrowClicked"
-             large flat icon>
-        <v-icon size="55px">keyboard_arrow_down</v-icon>
+      <div class="display-4 mb-3 text-xs-center">{{ $t('message.title') }}</div>
+      <v-btn large flat icon
+             class="arrow bounce" v-scroll-to="'#scrollTo'"
+             v-on:click="arrowClicked" >
+        <v-icon size="50px">keyboard_arrow_down</v-icon>
       </v-btn>
     </v-layout>
   </v-parallax>

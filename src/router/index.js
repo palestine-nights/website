@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import HomeView from '../views/HomeView.vue';
+import AdminView from '../views/AdminView.vue';
 import MenuView from '../views/MenuView.vue';
 
 import AppetizersMenuView from '../views/AppetizersMenuView.vue';
@@ -20,6 +21,11 @@ export default new Router({
       name: 'home',
       path: '/',
       component: HomeView,
+    },
+    {
+      name: 'admin',
+      path: '/dashboard',
+      component: AdminView,
     },
     {
       name: 'Menu',
