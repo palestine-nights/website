@@ -2,7 +2,10 @@
   <v-content>
     <v-toolbar class="transparent" absolute color="elevation-0">
       <v-btn round flat to="menu">
-        <span class="font-weight-light headline">Menu</span>
+        <span class="headline">Menu</span>
+      </v-btn>
+      <v-btn round flat to="reservation">
+        <span class="headline">Reserve</span>
       </v-btn>
     </v-toolbar>
     <section>
