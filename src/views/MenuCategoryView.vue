@@ -13,7 +13,8 @@
         </v-layout>
 
         <v-layout v-else-if="loading" column align-center>
-          <v-progress-circular :size="70" :width="7" color="green" indeterminate></v-progress-circular>
+          <v-progress-circular :size="70" :width="7" color="green" indeterminate>
+          </v-progress-circular>
         </v-layout>
 
         <v-layout v-else-if="!errored && !loading && items.length == 0" column align-center>

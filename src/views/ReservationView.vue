@@ -5,17 +5,16 @@
       <v-btn flat @click="response.showBar = false">Close</v-btn>
     </v-snackbar>
 
-    <v-flex xs12 row class="text-xs-center">
-      <h1 class="font-weight-light amber--text text--darken-3">Table Reservation</h1>
+    <v-flex xs12 row class="text-xs-center mb-3">
+      <h1 class="display-1 font-weight-light">Table Reservation</h1>
     </v-flex>
 
     <v-form ref="form" v-model="form.valid">
       <v-layout row wrap>
         <v-flex xs12 sm6 md4>
           <v-text-field
-            :background-color="form.theme"
+            :color="form.theme"
             v-model="reservation.name"
-            outline
             :rules="rules.name"
             class="mr-3"
             label="Full Name"
@@ -25,9 +24,8 @@
 
         <v-flex xs12 sm6 md4>
           <v-text-field
-            :background-color="form.theme"
+            :color="form.theme"
             v-model="reservation.email"
-            outline
             :rules="rules.email"
             class="mr-3"
             label="E-mail"
@@ -37,9 +35,8 @@
 
         <v-flex xs12 sm6 md4>
           <v-text-field
-            :background-color="form.theme"
+            :color="form.theme"
             v-model="reservation.phone"
-            outline
             :rules="rules.phone"
             class="mr-3"
             label="Phone"
@@ -47,7 +44,7 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex xs12 sm6 md4>
+        <v-flex xs6 sm6 md4>
           <v-dialog
             ref="timeDialog"
             v-model="dialog.time"
@@ -58,9 +55,8 @@
             width="300px"
           >
             <v-text-field
-              :background-color="form.theme"
+              :color="form.theme"
               v-model="reservation.time"
-              outline
               :rules="[rules.required]"
               readonly
               class="mr-3"
@@ -80,7 +76,7 @@
           </v-dialog>
         </v-flex>
 
-        <v-flex xs12 sm6 md4>
+        <v-flex xs6 sm6 md4>
           <v-dialog
             ref="dateDialog"
             v-model="dialog.date"
@@ -91,9 +87,8 @@
             width="300px"
           >
             <v-text-field
-              :background-color="form.theme"
+              :color="form.theme"
               v-model="reservation.date"
-              outline
               slot="activator"
               :rules="[rules.required]"
               readonly
@@ -116,8 +111,7 @@
         <v-flex xs12 sm6 md4>
           <v-select
             v-model="reservation.tableID"
-            :background-color="form.theme"
-            outline
+            :color="form.theme"
             :loading="response.loading"
             :rules="[rules.required]"
             :item-text="table => table.id + '. ' + table.description"
@@ -175,7 +169,7 @@ export default {
     return {
       form: {
         valid: false,
-        theme: 'amber darken-3',
+        theme: 'green',
       },
       response: {
         msg: null,
@@ -186,7 +180,7 @@ export default {
       reservation: {
         date: null,
         time: null,
-        tableID: null,
+        tableID: 1,
         phone: '',
         email: '',
         guests: 1,
@@ -238,12 +232,15 @@ export default {
   },
   methods: {
     submit() {
+      this.reservation.splitedDate = this.reservation.date.split('-');
+      this.reservation.splitedTime = this.reservation.time.split(':');
+
       this.startTime = new Date(
-        this.reservation.date.split('-')[0],
-        this.reservation.date.split('-')[1],
-        this.reservation.date.split('-')[2],
-        this.reservation.time.split(':')[0],
-        this.reservation.time.split(':')[1],
+        Number(this.reservation.splitedDate[0]),
+        Number(this.reservation.splitedDate[1] - 1),
+        Number(this.reservation.splitedDate[2]),
+        Number(this.reservation.splitedTime[0]),
+        Number(this.reservation.splitedTime[1]),
       ).toISOString();
 
       if (this.$refs.form.validate()) {
