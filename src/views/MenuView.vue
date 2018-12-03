@@ -1,49 +1,53 @@
 <template>
   <v-content>
     <v-container>
-      <v-flex v-for="(category,id) in categories" :key="id">
-        <v-card :to="category.link" class="with-bottom-offset">
-          <v-card-title>
-            <span class="headline mb-0 text-capitalize">{{ category.name }}</span>
-             <v-spacer></v-spacer>
-            <v-icon large>
-              keyboard_arrow_right
-            </v-icon>
-          </v-card-title>
-        </v-card>
-      </v-flex>
+
+      <v-layout column>
+        <v-flex xs3 v-for="(category,id) in categories" :key="id">
+          <v-card :to="'/menu/' + category" class="with-bottom-offset">
+            <v-card-title>
+              <span class="title font-weight-light text-capitalize">{{ category | humanize }}</span>
+              <v-spacer></v-spacer>
+              <v-icon large>keyboard_arrow_right</v-icon>
+            </v-card-title>
+          </v-card>
+        </v-flex>
+      </v-layout>
+
     </v-container>
   </v-content>
 </template>
 
 <script>
+import axios from 'axios';
+import config from '../config';
+
 export default {
   name: 'Menu',
+  mounted() {
+    this.menuHost = config.menuHost;
+    this.category = this.$route.params.category;
+
+    axios.get(`${this.menuHost}/menu/categories`)
+      .then((response) => {
+        this.categories = response.data;
+      })
+      .catch((error) => {
+        this.errMsg = error.response.data.error;
+      })
+      .finally(() => {
+        this.loading = false;
+      });
+  },
   data() {
     return {
-      categories: [
-        {
-          name: 'Main Dishes',
-          link: '/menu/main-dishes',
-        },
-        {
-          name: 'Soups',
-          link: '/menu/soups/',
-        },
-        {
-          name: 'Salads',
-          link: '/menu/salads/',
-        },
-        {
-          name: 'Appetizers',
-          link: '/menu/appetizers/',
-        },
-        {
-          name: 'Drinks',
-          link: '/menu/drinks/',
-        },
-      ],
+      categories: [],
+      errMsg: '',
+      loadin: true,
     };
+  },
+  filters: {
+    humanize: value => value.split('-').join(' '),
   },
 };
 </script>
