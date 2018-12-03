@@ -6,11 +6,7 @@ import AdminView from '../views/AdminView.vue';
 import ReservationView from '../views/ReservationView.vue';
 import MenuView from '../views/MenuView.vue';
 
-import AppetizersMenuView from '../views/AppetizersMenuView.vue';
-import SaladsMenuView from '../views/SaladsMenuView.vue';
-import SoupsMenuView from '../views/SoupsMenuView.vue';
-import DrinksMenuView from '../views/DrinksMenuView.vue';
-import MainDishesMenuView from '../views/MainDishesMenuView.vue';
+import MenuCategoryView from '../views/MenuCategoryView.vue';
 
 Vue.use(Router);
 
@@ -39,29 +35,9 @@ export default new Router({
       component: MenuView,
     },
     {
-      name: 'Appetizers Menu',
-      path: '/menu/appetizers',
-      component: AppetizersMenuView,
-    },
-    {
-      name: 'Soups Menu',
-      path: '/menu/soups',
-      component: SoupsMenuView,
-    },
-    {
-      name: 'Salads Menu',
-      path: '/menu/salads',
-      component: SaladsMenuView,
-    },
-    {
-      name: 'Drinks Menu',
-      path: '/menu/drinks',
-      component: DrinksMenuView,
-    },
-    {
-      name: 'Main Dishes Menu',
-      path: '/menu/main-dishes',
-      component: MainDishesMenuView,
+      name: 'Category Menu',
+      path: '/menu/:category',
+      component: MenuCategoryView,
     },
     {
       path: '*',
