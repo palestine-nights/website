@@ -11,6 +11,7 @@
     "@fortawesome/fontawesome-free": "^5.3.1",
     "axios": "^0.18.0",
     "google-maps": "^3.3.0",
+    "moment-timezone": "^0.5.23",
     "vue": "^2.5.17",
     "vue-analytics": "^5.16.0",
     "vue-carousel": "^0.14.0",

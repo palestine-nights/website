@@ -42,13 +42,15 @@
                 <div>
                   <v-icon color="green" class="mr-2" small>access_time</v-icon>
                   <strong class="mr-1">Time:</strong>
-                  <span class="green--text mr-5">{{ reservation.time | moment("HH:MM") }}</span>
+                  <span class="green--text mr-5">
+                    {{ reservation.time | moment("timezone", "Bahrain", "h:mm:ss") }}
+                  </span>
                 </div>
                 <div>
                   <v-icon color="green" class="mr-2" small>calendar_today</v-icon>
                   <strong class="mr-1">Date:</strong>
                   <span class="font-weight-light">
-                    {{ reservation.time | moment("DD.MM.YYYY") }}
+                    {{ reservation.time | moment("timezone", "Bahrain", "DD.MM.YYYY") }}
                   </span>
                 </div>
                 <div>
