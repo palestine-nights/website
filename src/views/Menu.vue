@@ -2,7 +2,7 @@
   <v-content>
     <v-container>
 
-      <v-layout column>
+      <v-layout v-if="!loading" column>
         <v-flex xs3 v-for="(category,id) in categories" :key="id">
           <v-card :to="'/menu/' + category" class="with-bottom-offset">
             <v-card-title>
@@ -14,6 +14,11 @@
             </v-card-title>
           </v-card>
         </v-flex>
+      </v-layout>
+
+      <v-layout v-else-if="loading" column align-center>
+        <v-progress-circular :size="70" :width="7" color="green" indeterminate>
+        </v-progress-circular>
       </v-layout>
 
     </v-container>
@@ -45,7 +50,7 @@ export default {
     return {
       categories: [],
       errMsg: '',
-      loadin: true,
+      loading: true,
     };
   },
   filters: {

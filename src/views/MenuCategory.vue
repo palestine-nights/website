@@ -2,7 +2,7 @@
   <v-content>
       <v-container>
         <v-layout v-if="!loading && items.length > 0" row wrap >
-          <v-flex row wrapmd6 sm6 xs12 v-for="(item,key) in items" :key="key">
+          <v-flex row wrapmd6 xl3 lg4 sm6 xs12 v-for="(item,key) in items" :key="key">
             <menu-item class="with-bottom-offset"
                       :title="item.name"
                       :price="prettyPrice(item.price)"
@@ -58,8 +58,6 @@ export default {
   data() {
     return {
       items: [],
-      errMsg: '',
-      errored: false,
       loading: true,
     };
   },
