@@ -7,6 +7,7 @@
                       :title="item.name"
                       :price="prettyPrice(item.price)"
                       :image="item.image_url"
+                      :to="'/menu/' + item.id"
                       height="300px">
             </menu-item>
           </v-flex>
@@ -34,7 +35,7 @@ import config from '../config';
 import MenuItem from '../components/MenuItem.vue';
 
 export default {
-  name: 'MenuCategoryView',
+  name: 'MenuCategory',
   components: {
     MenuItem,
   },
