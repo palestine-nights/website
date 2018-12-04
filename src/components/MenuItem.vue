@@ -1,5 +1,19 @@
 <template>
-  <v-card class="menu-top-item" :height="height">
+  <v-card v-if="to === undefined" class="menu-top-item" :height="height">
+    <v-img height="14rem" :src="image" :aspect-ratio="imageAspectRatio">
+    </v-img>
+
+    <div class="menu-top-item-price">
+      {{ price }}
+  </div>
+
+    <v-card-title class="justify-center">
+      <div class="headline text-xs-center font-weight-regular my-2">{{ title }}</div>
+      <div v-if="description" class="font-italic font-weight-light">{{ description }}</div>
+    </v-card-title>
+  </v-card>
+
+  <v-card v-else :to="to" class="menu-top-item" :height="height">
     <v-img height="14rem" :src="image" :aspect-ratio="imageAspectRatio">
     </v-img>
 
@@ -8,10 +22,9 @@
     </div>
 
     <v-card-title class="justify-center">
-      <div class="headline text-xs-center font-weight-bold my-2">{{ title }}</div>
-      <div v-if="description" class="font-italic">{{ description }}</div>
+      <div class="headline text-xs-center font-weight-regular my-2">{{ title }}</div>
+      <div v-if="description" class="font-italic font-weight-light">{{ description }}</div>
     </v-card-title>
-
   </v-card>
 </template>
 
@@ -45,7 +58,12 @@ export default {
     },
     height: {
       type: String,
-      required: true,
+      default: '300px',
+      required: false,
+    },
+    to: {
+      type: String,
+      required: false,
     },
   },
 };

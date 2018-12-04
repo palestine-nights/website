@@ -6,7 +6,9 @@
         <v-flex xs3 v-for="(category,id) in categories" :key="id">
           <v-card :to="'/menu/' + category" class="with-bottom-offset">
             <v-card-title>
-              <span class="title font-weight-light text-capitalize">{{ category | humanize }}</span>
+              <span class="title font-weight-regular text-capitalize">
+                {{ category | humanize }}
+              </span>
               <v-spacer></v-spacer>
               <v-icon large>keyboard_arrow_right</v-icon>
             </v-card-title>

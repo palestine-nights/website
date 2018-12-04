@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import HomeView from '../views/HomeView.vue';
-import AdminView from '../views/AdminView.vue';
-import ReservationView from '../views/ReservationView.vue';
-import MenuView from '../views/MenuView.vue';
-
-import MenuCategoryView from '../views/MenuCategoryView.vue';
+import Home from '../views/Home.vue';
+import Admin from '../views/Admin.vue';
+import Reservation from '../views/Reservation.vue';
+import Menu from '../views/Menu.vue';
+import MenuCategory from '../views/MenuCategory.vue';
+import Meal from '../views/Meal.vue';
 
 Vue.use(Router);
 
@@ -17,27 +17,32 @@ export default new Router({
     {
       name: 'home',
       path: '/',
-      component: HomeView,
+      component: Home,
     },
     {
       name: 'admin',
       path: '/dashboard',
-      component: AdminView,
+      component: Admin,
     },
     {
       name: 'new-reservation',
       path: '/reservation',
-      component: ReservationView,
+      component: Reservation,
     },
     {
       name: 'Menu',
       path: '/menu',
-      component: MenuView,
+      component: Menu,
+    },
+    {
+      name: 'Menu Item',
+      path: '/menu/:id(\\d+)',
+      component: Meal,
     },
     {
       name: 'Category Menu',
       path: '/menu/:category',
-      component: MenuCategoryView,
+      component: MenuCategory,
     },
     {
       path: '*',
