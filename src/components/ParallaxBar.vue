@@ -38,17 +38,12 @@ export default {
     };
   },
   props: {
-    /*
-    * Path to image.
-    */
+    /**
+     * Path to image.
+     */
     image: {
       type: String,
       required: true,
-      options: {
-        duration: 999,
-        easing: 'easeOutQuad',
-        offset: -100,
-      },
     },
   },
 };
