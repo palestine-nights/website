@@ -8,6 +8,8 @@ import Menu from '../views/Menu.vue';
 import MenuCategory from '../views/MenuCategory.vue';
 import Meal from '../views/Meal.vue';
 import EditMeal from '../views/EditMeal.vue';
+import CreateMeal from '../views/CreateMeal.vue';
+
 
 Vue.use(Router);
 
@@ -44,6 +46,11 @@ export default new Router({
       name: 'Edit Menu Item',
       path: '/menu/edit/:id(\\d+)',
       component: EditMeal,
+    },
+    {
+      name: 'Create Menu Item',
+      path: '/menu/new',
+      component: CreateMeal,
     },
     {
       name: 'Category Menu',
