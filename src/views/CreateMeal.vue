@@ -28,7 +28,6 @@
 
 <script>
 import axios from 'axios';
-import config from '../config';
 import MealEditor from '../components/MealEditor.vue';
 
 export default {
@@ -49,10 +48,9 @@ export default {
   },
   methods: {
     create() {
-      this.apiHost = config.apiHost;
       this.meal.price = Number(this.meal.price);
 
-      axios.post(`${this.apiHost}/menu`, this.meal)
+      axios.post(`${this.$apiHost}/menu`, this.meal)
         .then((response) => {
           this.meal = response.data;
           this.$router.push(`/menu/${this.meal.id}`);
