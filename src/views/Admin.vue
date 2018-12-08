@@ -43,14 +43,14 @@
                   <v-icon color="green" class="mr-2" small>access_time</v-icon>
                   <strong class="mr-1">Time:</strong>
                   <span class="green--text mr-5">
-                    {{ reservation.time | moment("timezone", "Bahrain", "h:mm:ss") }}
+                    {{ reservation.time | moment("timezone", "Asia/Bahrain", "h:mm:ss") }}
                   </span>
                 </div>
                 <div>
                   <v-icon color="green" class="mr-2" small>calendar_today</v-icon>
                   <strong class="mr-1">Date:</strong>
                   <span class="font-weight-light">
-                    {{ reservation.time | moment("timezone", "Bahrain", "DD.MM.YYYY") }}
+                    {{ reservation.time | moment("timezone", "Asia/Bahrain", "DD.MM.YYYY") }}
                   </span>
                 </div>
                 <div>
@@ -101,11 +101,11 @@ export default {
     };
   },
   mounted() {
-    this.reservationHost = config.reservationHost;
+    this.apiHost = config.apiHost;
 
     // TODO: Show something in case of empty arrray.
     // Get all upcoming reservations.
-    axios.get(`${this.reservationHost}/reservations`)
+    axios.get(`${this.apiHost}/reservations`)
       .then((response) => {
         this.reservations = response.data;
       })

@@ -40,10 +40,10 @@ export default {
     MenuItem,
   },
   mounted() {
-    this.menuHost = config.menuHost;
+    this.apiHost = config.apiHost;
     this.category = this.$route.params.category;
 
-    axios.get(`${this.menuHost}/menu/${this.category}`)
+    axios.get(`${this.apiHost}/menu/${this.category}`)
       .then((response) => {
         this.items = response.data;
       })

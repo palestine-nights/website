@@ -49,10 +49,10 @@ export default {
   },
   methods: {
     create() {
-      this.menuHost = config.menuHost;
+      this.apiHost = config.apiHost;
       this.meal.price = Number(this.meal.price);
 
-      axios.post(`${this.menuHost}/menu`, this.meal)
+      axios.post(`${this.apiHost}/menu`, this.meal)
         .then((response) => {
           this.meal = response.data;
           this.$router.push(`/menu/${this.meal.id}`);
