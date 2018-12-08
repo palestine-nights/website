@@ -33,6 +33,17 @@ Vue.prototype.$mapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
  */
 Vue.prototype.$placesApiKey = process.env.VUE_APP_GOOGLE_MAPS_PLACES_API_KEY;
 
+/**
+ * VUE_APP_API_URL - URL of running "API" micro-service. By default equals http://localhost:4000
+ */
+Vue.prototype.$apiHost = process.env.VUE_APP_API_URL;
+
+/**
+ * VUE_APP_API_URL - URL of running "Rating" micro-service. By default equals http://localhost:3000
+ */
+Vue.prototype.$placeHost = process.env.VUE_APP_RATING_URL;
+
+
 Vue.use(VueMoment, { moment });
 
 Vue.use(VueI18n);

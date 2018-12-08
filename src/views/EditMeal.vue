@@ -56,7 +56,6 @@
 
 <script>
 import axios from 'axios';
-import config from '../config';
 import MealEditor from '../components/MealEditor.vue';
 
 export default {
@@ -65,10 +64,9 @@ export default {
     MealEditor,
   },
   mounted() {
-    this.apiHost = config.apiHost;
     this.id = this.$route.params.id;
 
-    axios.get(`${this.apiHost}/menu/${this.id}`)
+    axios.get(`${this.$apiHost}/menu/${this.id}`)
       .then((response) => {
         this.meal = response.data;
       }).catch((error) => {
@@ -95,7 +93,7 @@ export default {
     saveMeal() {
       this.meal.price = Number(this.meal.price);
 
-      axios.put(`${this.apiHost}/menu/${this.id}`, this.meal)
+      axios.put(`${this.$apiHost}/menu/${this.id}`, this.meal)
         .then((response) => {
           this.meal = response.data;
           this.color = 'success';
@@ -110,7 +108,7 @@ export default {
         });
     },
     deleteMeal() {
-      axios.delete(`${this.apiHost}/menu/${this.id}`)
+      axios.delete(`${this.$apiHost}/menu/${this.id}`)
         .then(() => {
           this.$router.push('/menu');
         }).catch((error) => {

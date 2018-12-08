@@ -31,7 +31,6 @@
 
 <script>
 import axios from 'axios';
-import config from '../config';
 import MenuItem from '../components/MenuItem.vue';
 
 export default {
@@ -40,10 +39,9 @@ export default {
     MenuItem,
   },
   mounted() {
-    this.apiHost = config.apiHost;
     this.category = this.$route.params.category;
 
-    axios.get(`${this.apiHost}/menu/${this.category}`)
+    axios.get(`${this.$apiHost}/menu/${this.category}`)
       .then((response) => {
         this.items = response.data;
       })

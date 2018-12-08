@@ -80,7 +80,6 @@
 
 <script>
 import axios from 'axios';
-import config from '../config';
 
 export default {
   data() {
@@ -100,8 +99,7 @@ export default {
     };
   },
   mounted() {
-    this.apiHost = config.apiHost;
-    axios.get(`${this.apiHost}/tables`).then((response) => {
+    axios.get(`${this.$apiHost}/tables`).then((response) => {
       this.tables = response.data;
     }).catch((error) => {
       this.errored = true;
@@ -116,7 +114,7 @@ export default {
   },
   methods: {
     createTable() {
-      axios.post(`${this.apiHost}/tables`, this.table).then((response) => {
+      axios.post(`${this.$apiHost}/tables`, this.table).then((response) => {
         this.tables.push(response.data);
         this.table.description = '';
         this.table.places = 0;
@@ -136,7 +134,7 @@ export default {
       });
     },
     deleteTable(i, id) {
-      axios.delete(`${this.apiHost}/tables/${id}`).then(() => {
+      axios.delete(`${this.$apiHost}/tables/${id}`).then(() => {
         this.tables = this.tables.filter(item => item !== this.tables[i]);
         this.snackbar = {
           msg: `Table ${id} was successfully removed.`,

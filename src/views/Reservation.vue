@@ -156,7 +156,6 @@
 
 <script>
 import axios from 'axios';
-import config from '../config';
 
 export default {
   data() {
@@ -210,9 +209,7 @@ export default {
     };
   },
   mounted() {
-    this.apiHost = config.apiHost;
-
-    axios.get(`${this.apiHost}/tables`)
+    axios.get(`${this.$apiHost}/tables`)
       .then((response) => {
         this.tables = response.data;
       })
@@ -238,7 +235,7 @@ export default {
       ).toISOString();
 
       if (this.$refs.form.validate()) {
-        axios.post(`${this.apiHost}/reservations`, {
+        axios.post(`${this.$apiHost}/reservations`, {
           full_name: this.reservation.name,
           email: this.reservation.email,
           table_id: this.reservation.tableID,

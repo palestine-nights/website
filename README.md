@@ -12,6 +12,12 @@ Install dependencies
 $> yarn install
 ```
 
+Specify envs
+
+```
+$> cp example.env .env
+```
+
 Start development server
 
 ```sh

@@ -90,7 +90,6 @@
 
 <script>
 import axios from 'axios';
-import config from '../config';
 
 export default {
   data() {
@@ -101,11 +100,9 @@ export default {
     };
   },
   mounted() {
-    this.apiHost = config.apiHost;
-
     // TODO: Show something in case of empty arrray.
     // Get all upcoming reservations.
-    axios.get(`${this.apiHost}/reservations`)
+    axios.get(`${this.$apiHost}/reservations`)
       .then((response) => {
         this.reservations = response.data;
       })

@@ -27,15 +27,13 @@
 
 <script>
 import axios from 'axios';
-import config from '../config';
 
 export default {
   name: 'Menu',
   mounted() {
-    this.apiHost = config.apiHost;
     this.category = this.$route.params.category;
 
-    axios.get(`${this.apiHost}/menu/categories`)
+    axios.get(`${this.$apiHost}/menu/categories`)
       .then((response) => {
         this.categories = response.data;
       })
