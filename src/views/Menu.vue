@@ -32,10 +32,10 @@ import config from '../config';
 export default {
   name: 'Menu',
   mounted() {
-    this.menuHost = config.menuHost;
+    this.apiHost = config.apiHost;
     this.category = this.$route.params.category;
 
-    axios.get(`${this.menuHost}/menu/categories`)
+    axios.get(`${this.apiHost}/menu/categories`)
       .then((response) => {
         this.categories = response.data;
       })

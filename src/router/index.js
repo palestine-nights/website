@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import Home from '../views/Home.vue';
 import Admin from '../views/Admin.vue';
+import TableDashboard from '../views/TableDashboard.vue';
 import Reservation from '../views/Reservation.vue';
 import Menu from '../views/Menu.vue';
 import MenuCategory from '../views/MenuCategory.vue';
@@ -23,13 +24,18 @@ export default new Router({
       component: Home,
     },
     {
-      name: 'admin',
+      name: 'Dashboard',
       path: '/dashboard',
       component: Admin,
     },
     {
-      name: 'new-reservation',
-      path: '/reservation',
+      name: 'Table Dashboard',
+      path: '/dashboard/tables',
+      component: TableDashboard,
+    },
+    {
+      name: 'Reservation',
+      path: '/reservations/new',
       component: Reservation,
     },
     {

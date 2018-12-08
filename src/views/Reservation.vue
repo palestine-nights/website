@@ -52,7 +52,7 @@
             persistent
             lazy
             full-width
-            width="300px"
+            width="290px"
           >
             <v-text-field
               :color="form.theme"
@@ -65,13 +65,10 @@
               prepend-icon="access_time"
             ></v-text-field>
 
-            <v-time-picker
-              :color="form.theme"
-              v-model="reservation.time"
-              format="24hr"
-              @input="$refs.timeDialog.save(reservation.time)"
-            >
+            <v-time-picker :color="form.theme" v-model="reservation.time" format="24hr">
               <v-btn flat @click="dialog.time = false">Cancel</v-btn>
+              <v-spacer></v-spacer>
+              <v-btn flat @click="$refs.timeDialog.save(reservation.time)" color="green">OK</v-btn>
             </v-time-picker>
           </v-dialog>
         </v-flex>
@@ -84,7 +81,7 @@
             persistent
             lazy
             full-width
-            width="300px"
+            width="290px"
           >
             <v-text-field
               :color="form.theme"
@@ -97,13 +94,10 @@
               prepend-icon="event"
             ></v-text-field>
 
-            <v-date-picker
-              :color="form.theme"
-              v-model="reservation.date"
-              @input="$refs.dateDialog.save(reservation.date)"
-              class="mr-3"
-            >
+            <v-date-picker :color="form.theme" v-model="reservation.date" class="mr-3">
               <v-btn flat @click="dialog.date = false">Cancel</v-btn>
+              <v-spacer></v-spacer>
+              <v-btn flat @click="$refs.dateDialog.save(reservation.date)" color="green">OK</v-btn>
             </v-date-picker>
           </v-dialog>
         </v-flex>
@@ -216,9 +210,9 @@ export default {
     };
   },
   mounted() {
-    this.reservationHost = config.reservationHost;
+    this.apiHost = config.apiHost;
 
-    axios.get(`${this.reservationHost}/tables`)
+    axios.get(`${this.apiHost}/tables`)
       .then((response) => {
         this.tables = response.data;
       })
@@ -244,7 +238,7 @@ export default {
       ).toISOString();
 
       if (this.$refs.form.validate()) {
-        axios.post(`${this.reservationHost}/reservations`, {
+        axios.post(`${this.apiHost}/reservations`, {
           full_name: this.reservation.name,
           email: this.reservation.email,
           table_id: this.reservation.tableID,
