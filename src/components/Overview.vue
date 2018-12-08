@@ -73,10 +73,8 @@ export default {
     },
   },
   mounted() {
-    this.placesHost = this.$placesHost;
-
     axios.get(
-      `${this.placesHost}?placeid=${this.placeID}`,
+      `${this.$ratingHost}?placeid=${this.placeID}`,
       {
         headers: {
           Authorization: this.apiKey,

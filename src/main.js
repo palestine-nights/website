@@ -41,7 +41,7 @@ Vue.prototype.$apiHost = process.env.VUE_APP_API_URL;
 /**
  * VUE_APP_API_URL - URL of running "Rating" micro-service. By default equals http://localhost:3000
  */
-Vue.prototype.$placeHost = process.env.VUE_APP_RATING_URL;
+Vue.prototype.$ratingHost = process.env.VUE_APP_RATING_URL;
 
 
 Vue.use(VueMoment, { moment });
