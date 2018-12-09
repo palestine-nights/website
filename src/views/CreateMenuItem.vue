@@ -29,7 +29,7 @@ import { mapState } from 'vuex';
 import MealEditor from '../components/MealEditor.vue';
 
 export default {
-  name: 'CreateMeal',
+  name: 'CreateMenuItem',
   components: {
     MealEditor,
   },
@@ -42,14 +42,14 @@ export default {
     ...mapState({
       msg: state => state.menuStore.msg,
       loading: state => state.menuStore.loading,
-    })
+    }),
   },
   methods: {
     create() {
       this.menuItem.price = Number(this.menuItem.price);
       this.$store.dispatch('menuStore/CREATE_MENU_ITEM', this.menuItem).then((menuItem) => {
         this.$router.push(`/menu/${menuItem.id}`);
-      })
+      });
     },
   },
 };

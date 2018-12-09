@@ -8,8 +8,8 @@ import Reservation from '../views/Reservation.vue';
 import Categories from '../views/Categories.vue';
 import MenuCategory from '../views/MenuCategory.vue';
 import Meal from '../views/Meal.vue';
-import EditMeal from '../views/EditMeal.vue';
-import CreateMeal from '../views/CreateMeal.vue';
+import EditMenuItem from '../views/EditMenuItem.vue';
+import CreateMenuItem from '../views/CreateMenuItem.vue';
 
 Vue.use(Router);
 
@@ -50,12 +50,12 @@ const router = new Router({
     {
       name: 'Edit Menu Item',
       path: '/menu/edit/:id(\\d+)',
-      component: EditMeal,
+      component: EditMenuItem,
     },
     {
       name: 'Create Menu Item',
       path: '/menu/new',
-      component: CreateMeal,
+      component: CreateMenuItem,
     },
     {
       name: 'Category',

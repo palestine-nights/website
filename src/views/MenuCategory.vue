@@ -39,13 +39,13 @@ export default {
     this.$store.dispatch('menuStore/GET_CATEGORY_MENU_ITEMS', this.category_id);
   },
   data() {
-    return {}
+    return {};
   },
   computed: {
     ...mapState({
       menuItems: state => state.menuStore.menuItems,
       loading: state => state.menuStore.loading,
-    })
+    }),
   },
   methods: {
     prettyPrice: value => value.toFixed(3),

@@ -52,7 +52,7 @@ export default {
     ...mapState({
       categories: state => state.categoriesStore.categories,
       loading: state => state.categoriesStore.loading,
-    })
+    }),
   },
 };
 </script>

@@ -55,20 +55,20 @@ import { mapState } from 'vuex';
 import MealEditor from '../components/MealEditor.vue';
 
 export default {
-  name: 'EditMeal',
+  name: 'EditMenuItem',
   components: {
     MealEditor,
   },
   mounted() {
     this.$store.dispatch('menuStore/GET_MENU_ITEM', this.$route.params.id).then((menuItem) => {
       this.menuItem = menuItem;
-    })
+    });
   },
   computed: {
     ...mapState({
       msg: state => state.menuStore.msg,
       loading: state => state.menuStore.loading,
-    })
+    }),
   },
   data() {
     return {
@@ -81,7 +81,7 @@ export default {
       this.menuItem.price = Number(this.menuItem.price);
       this.$store.dispatch('menuStore/UPDATE_MENU_ITEM', this.menuItem).then((response) => {
         this.$router.push(`/menu/${response.id}`);
-      })
+      });
     },
     deleteMeal() {
       this.$store.dispatch('menuStore/DELETE_MENU_ITEM', this.menuItem.id).then(() => {

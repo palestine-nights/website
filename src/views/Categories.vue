@@ -35,13 +35,13 @@ export default {
     this.$store.dispatch('categoriesStore/GET_CATEGORIES');
   },
   data() {
-    return {}
+    return {};
   },
   computed: {
     ...mapState({
       categories: state => state.categoriesStore.categories,
       loading: state => state.categoriesStore.loading,
-    })
+    }),
   },
   filters: {
     humanize: value => value.split('-').join(' '),

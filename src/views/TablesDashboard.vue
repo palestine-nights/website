@@ -99,7 +99,7 @@ export default {
       table: state => state.tablesStore.table,
       msg: state => state.tablesStore.msg,
       loading: state => state.tablesStore.loading,
-    })
+    }),
   },
 
   methods: {
