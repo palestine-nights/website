@@ -1,13 +1,13 @@
 <template>
   <v-container>
     <v-layout v-if="!loading" column>
-      <v-snackbar v-model="showBar" :color="color" top>
-        <span>{{ msg }}</span>
-        <v-btn flat @click="showBar = false">Close</v-btn>
+      <v-snackbar v-model="msg.show" :color="msg.color" top>
+        <span>{{ msg.text }}</span>
+        <!-- <v-btn flat @click="showBar = false">Close</v-btn> -->
       </v-snackbar>
 
       <v-form>
-        <meal-editor v-bind:meal="meal">
+        <meal-editor v-bind:meal="menuItem">
           <template slot="bottom">
           <v-flex xs12 row class="text-xs-center">
             <v-dialog v-model="deleteMealDialog" width="500">
@@ -17,7 +17,7 @@
 
               <v-card>
                 <v-card-title class="title error--text" primary-title>
-                  Are you sure you want to delete meal with ID {{ meal.id }}?
+                  Are you sure you want to delete meal with ID {{ menuItem.id }}?
                 </v-card-title>
 
                 <v-card-text>
@@ -44,10 +44,6 @@
       </v-form>
     </v-layout>
 
-    <v-layout column align-center v-else-if="errored">
-      <h2 class="error--text font-weight-light">{{ msg }}</h2>
-    </v-layout>
-
     <v-layout column align-center v-else-if="loading">
       <v-progress-circular :size="70" :width="7" color="green" indeterminate></v-progress-circular>
     </v-layout>
@@ -55,7 +51,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 import MealEditor from '../components/MealEditor.vue';
 
 export default {
@@ -64,60 +60,33 @@ export default {
     MealEditor,
   },
   mounted() {
-    this.id = this.$route.params.id;
-
-    axios.get(`${this.$apiHost}/menu/${this.id}`)
-      .then((response) => {
-        this.meal = response.data;
-      }).catch((error) => {
-        this.errored = true;
-        this.msg = error.response.data.error;
-        this.color = 'error';
-        this.showBar = true;
-      }).finally(() => {
-        this.loading = false;
-      });
+    this.$store.dispatch('menuStore/GET_MENU_ITEM', this.$route.params.id).then((menuItem) => {
+      this.menuItem = menuItem;
+    })
+  },
+  computed: {
+    ...mapState({
+      msg: state => state.menuStore.msg,
+      loading: state => state.menuStore.loading,
+    })
   },
   data() {
     return {
-      meal: {},
+      menuItem: {},
       deleteMealDialog: false,
-      showBar: false,
-      loading: true,
-      errored: false,
-      msg: '',
-      color: 'error',
     };
   },
   methods: {
     saveMeal() {
-      this.meal.price = Number(this.meal.price);
-
-      axios.put(`${this.$apiHost}/menu/${this.id}`, this.meal)
-        .then((response) => {
-          this.meal = response.data;
-          this.color = 'success';
-          this.showBar = true;
-          this.msg = 'Successfully updated';
-        }).catch((error) => {
-          this.msg = error.response.data.error;
-          this.color = 'error';
-          this.showBar = true;
-        }).finally(() => {
-          this.loading = false;
-        });
+      this.menuItem.price = Number(this.menuItem.price);
+      this.$store.dispatch('menuStore/UPDATE_MENU_ITEM', this.menuItem).then((response) => {
+        this.$router.push(`/menu/${response.id}`);
+      })
     },
     deleteMeal() {
-      axios.delete(`${this.$apiHost}/menu/${this.id}`)
-        .then(() => {
-          this.$router.push('/menu');
-        }).catch((error) => {
-          this.msg = error.response.data.error;
-          this.color = 'error';
-          this.showBar = true;
-        }).finally(() => {
-          this.loading = false;
-        });
+      this.$store.dispatch('menuStore/DELETE_MENU_ITEM', this.menuItem.id).then(() => {
+        this.$router.push('/categories');
+      });
     },
   },
 };

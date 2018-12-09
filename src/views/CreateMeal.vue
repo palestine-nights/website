@@ -1,19 +1,17 @@
 <template>
   <v-container>
     <v-layout column>
-      <v-snackbar v-model="showBar" :color="color" top>
-        <span>{{ msg }}</span>
-        <v-btn flat @click="showBar = false">Close</v-btn>
+      <v-snackbar v-model="msg.show" :color="msg.color" top>
+        <span>{{ msg.text }}</span>
+        <!-- <v-btn flat @click="showBar = false">Close</v-btn> -->
       </v-snackbar>
 
       <v-form>
-        <meal-editor v-bind:meal="meal">
+        <meal-editor v-bind:meal="menuItem">
           <template slot="bottom">
             <v-flex xs12 row class="text-xs-center">
               <v-btn
                 class="mr-3"
-                :loading="loading"
-                :disabled="loading"
                 @click="create()"
                 color="green"
               >Create</v-btn>
@@ -27,7 +25,7 @@
 
 
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 import MealEditor from '../components/MealEditor.vue';
 
 export default {
@@ -37,30 +35,21 @@ export default {
   },
   data() {
     return {
-      meal: {},
-      deleteMealDialog: false,
-      showBar: false,
-      loading: false,
-      errored: false,
-      msg: '',
-      color: 'error',
+      menuItem: {},
     };
+  },
+  computed: {
+    ...mapState({
+      msg: state => state.menuStore.msg,
+      loading: state => state.menuStore.loading,
+    })
   },
   methods: {
     create() {
-      this.meal.price = Number(this.meal.price);
-
-      axios.post(`${this.$apiHost}/menu`, this.meal)
-        .then((response) => {
-          this.meal = response.data;
-          this.$router.push(`/menu/${this.meal.id}`);
-        }).catch((error) => {
-          this.msg = error.response.data.error;
-          this.color = 'error';
-          this.showBar = true;
-        }).finally(() => {
-          this.loading = false;
-        });
+      this.menuItem.price = Number(this.menuItem.price);
+      this.$store.dispatch('menuStore/CREATE_MENU_ITEM', this.menuItem).then((menuItem) => {
+        this.$router.push(`/menu/${menuItem.id}`);
+      })
     },
   },
 };

@@ -16,6 +16,8 @@ import router from './router';
 import EngLocale from './locales/en.json';
 import ArLocale from './locales/ar.json';
 
+import store from './store';
+
 Vue.config.productionTip = false;
 
 /**
@@ -34,15 +36,14 @@ Vue.prototype.$mapsApiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
 Vue.prototype.$placesApiKey = process.env.VUE_APP_GOOGLE_MAPS_PLACES_API_KEY;
 
 /**
- * VUE_APP_API_URL - URL of running "API" micro-service. By default equals http://localhost:4000
+ * VUE_APP_API_URL - URL of running "API" micro-service. By default equals http://localhost:4000.
  */
 Vue.prototype.$apiHost = process.env.VUE_APP_API_URL;
 
 /**
- * VUE_APP_API_URL - URL of running "Rating" micro-service. By default equals http://localhost:3000
+ * VUE_APP_API_URL - URL of running "Rating" micro-service. By default equals http://localhost:3000.
  */
 Vue.prototype.$ratingHost = process.env.VUE_APP_RATING_URL;
-
 
 Vue.use(VueMoment, { moment });
 
@@ -76,6 +77,7 @@ const i18n = new VueI18n({
 
 new Vue({
   i18n,
+  store,
   router,
   render: h => h(App),
 }).$mount('#app');

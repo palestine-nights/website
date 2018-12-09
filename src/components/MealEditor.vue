@@ -1,9 +1,5 @@
 <template>
   <v-layout row wrap>
-    <v-flex xs12 row class="text-xs-center mb-3">
-      <h1 class="display-1 font-weight-light">Create Meal</h1>
-    </v-flex>
-
     <v-flex xs12 sm12 md12>
       <v-text-field v-model="meal.name" label="Name"></v-text-field>
     </v-flex>
@@ -13,7 +9,14 @@
     </v-flex>
 
     <v-flex xs12 sm12 md12>
-      <v-text-field v-model="meal.category" label="Category"></v-text-field>
+      <v-select
+        v-model="meal.category_id"
+        :item-text="value => value.name"
+        :items="categories"
+        :loading="loading"
+        item-value="id"
+        label="Category"
+      ></v-select>
     </v-flex>
 
     <v-flex xs12 sm12 md12>
@@ -29,6 +32,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'MealEditor',
   props: {
@@ -39,6 +44,15 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  mounted() {
+    this.$store.dispatch('categoriesStore/GET_CATEGORIES');
+  },
+  computed: {
+    ...mapState({
+      categories: state => state.categoriesStore.categories,
+      loading: state => state.categoriesStore.loading,
+    })
   },
 };
 </script>

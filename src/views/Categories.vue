@@ -4,10 +4,11 @@
 
       <v-layout v-if="!loading" column>
         <v-flex xs3 v-for="(category,id) in categories" :key="id">
-          <v-card :to="'/menu/' + category" class="with-bottom-offset">
+          <v-card :to="{ name: 'Category', params: { category_id: category.id } }"
+                  class="with-bottom-offset">
             <v-card-title>
               <span class="title font-weight-regular text-capitalize">
-                {{ category | humanize }}
+                {{ category.name | humanize }}
               </span>
               <v-spacer></v-spacer>
               <v-icon large>keyboard_arrow_right</v-icon>
@@ -26,30 +27,21 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
-  name: 'Menu',
+  name: 'Categories',
   mounted() {
-    this.category = this.$route.params.category;
-
-    axios.get(`${this.$apiHost}/menu/categories`)
-      .then((response) => {
-        this.categories = response.data;
-      })
-      .catch((error) => {
-        this.errMsg = error.response.data.error;
-      })
-      .finally(() => {
-        this.loading = false;
-      });
+    this.$store.dispatch('categoriesStore/GET_CATEGORIES');
   },
   data() {
-    return {
-      categories: [],
-      errMsg: '',
-      loading: true,
-    };
+    return {}
+  },
+  computed: {
+    ...mapState({
+      categories: state => state.categoriesStore.categories,
+      loading: state => state.categoriesStore.loading,
+    })
   },
   filters: {
     humanize: value => value.split('-').join(' '),

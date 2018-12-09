@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <v-snackbar v-model="snackbar.show" :color="snackbar.color" top>
-      <span>{{ snackbar.msg }}</span>
-      <v-btn flat @click="snackbar.show = false">Close</v-btn>
+    <v-snackbar v-model="msg.show" :color="msg.color" top>
+      <span>{{ msg.text }}</span>
+      <!-- <v-btn flat @click="this.$tablesStore.$store.commit('tablesStore/CLOSE_MSG')">Close</v-btn> -->
     </v-snackbar>
 
     <h1 class="font-weight-light">Tables</h1>
@@ -14,7 +14,7 @@
             <v-text-field
               label="Description"
               prepend-icon="description"
-              v-model="table.description"
+              v-model="description"
               color="green"
               class="mr-3"
             ></v-text-field>
@@ -24,7 +24,7 @@
             <v-slider
               label="Number Of Seats"
               prepend-icon="event_seat"
-              v-model="table.places"
+              v-model="places"
               color="green"
               class="mr-3"
               min="0"
@@ -79,77 +79,38 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
+  name: 'TablesDashboard',
+
   data() {
     return {
-      table: {
-        description: '',
-        places: 0,
-      },
-      tables: [],
-      loading: true,
-      errored: false,
-      snackbar: {
-        show: false,
-        msg: '',
-        color: 'green',
-      },
+      description: '',
+      places: 0,
     };
   },
   mounted() {
-    axios.get(`${this.$apiHost}/tables`).then((response) => {
-      this.tables = response.data;
-    }).catch((error) => {
-      this.errored = true;
-      this.snackbar = {
-        msg: error.response.data.error,
-        color: 'red',
-        show: true,
-      };
-    }).finally(() => {
-      this.loading = false;
-    });
+    this.$store.dispatch('tablesStore/GET_TABLES');
   },
+  computed: {
+    ...mapState({
+      tables: state => state.tablesStore.tables,
+      table: state => state.tablesStore.table,
+      msg: state => state.tablesStore.msg,
+      loading: state => state.tablesStore.loading,
+    })
+  },
+
   methods: {
     createTable() {
-      axios.post(`${this.$apiHost}/tables`, this.table).then((response) => {
-        this.tables.push(response.data);
-        this.table.description = '';
-        this.table.places = 0;
-        this.snackbar = {
-          msg: 'Table was successfully created.',
-          color: 'green',
-          show: true,
-        };
-      }).catch((error) => {
-        this.snackbar = {
-          msg: error.response.data.error,
-          color: 'red',
-          show: true,
-        };
-      }).finally(() => {
-        this.loading = false;
+      this.$store.dispatch('tablesStore/CREATE_TABLE', {
+        description: this.description,
+        places: this.places,
       });
     },
-    deleteTable(i, id) {
-      axios.delete(`${this.$apiHost}/tables/${id}`).then(() => {
-        this.tables = this.tables.filter(item => item !== this.tables[i]);
-        this.snackbar = {
-          msg: `Table ${id} was successfully removed.`,
-          color: 'orange',
-          show: true,
-        };
-      }).catch((error) => {
-        this.snackbar = {
-          msg: error.response.data.error,
-          color: 'red',
-          show: true,
-        };
-      }).finally(() => {
-        this.loading = false;
-      });
+    deleteTable(i, ID) {
+      this.$store.dispatch('tablesStore/DELETE_TABLE', ID);
     },
   },
 };
