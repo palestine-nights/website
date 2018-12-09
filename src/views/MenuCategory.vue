@@ -1,8 +1,8 @@
 <template>
   <v-content>
       <v-container>
-        <v-layout v-if="!loading && items.length > 0" row wrap >
-          <v-flex row wrapmd6 xl3 lg4 sm6 xs12 v-for="(item,key) in items" :key="key">
+        <v-layout v-if="!loading && menuItems.length > 0" row wrap >
+          <v-flex row wrapmd6 xl3 lg4 sm6 xs12 v-for="(item,key) in menuItems" :key="key">
             <menu-item class="with-bottom-offset"
                       :title="item.name"
                       :price="prettyPrice(item.price)"
@@ -18,19 +18,15 @@
           </v-progress-circular>
         </v-layout>
 
-        <v-layout v-else-if="!errored && !loading && items.length == 0" column align-center>
+        <v-layout v-else-if="!loading && menuItems.length == 0" column align-center>
           <h2 class="font-weight-light">No meals for specified category.</h2>
-        </v-layout>
-
-        <v-layout v-else-if="errored" column align-center>
-          <h2 class="error--text font-weight-light">Sorry, try again later</h2>
         </v-layout>
       </v-container>
   </v-content>
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 import MenuItem from '../components/MenuItem.vue';
 
 export default {
@@ -39,25 +35,17 @@ export default {
     MenuItem,
   },
   mounted() {
-    this.category = this.$route.params.category;
-
-    axios.get(`${this.$apiHost}/menu/${this.category}`)
-      .then((response) => {
-        this.items = response.data;
-      })
-      .catch((error) => {
-        this.errMsg = error.response.data.error;
-        this.errored = true;
-      })
-      .finally(() => {
-        this.loading = false;
-      });
+    this.category_id = this.$route.params.category_id;
+    this.$store.dispatch('menuStore/GET_CATEGORY_MENU_ITEMS', this.category_id);
   },
   data() {
-    return {
-      items: [],
-      loading: true,
-    };
+    return {};
+  },
+  computed: {
+    ...mapState({
+      menuItems: state => state.menuStore.menuItems,
+      loading: state => state.menuStore.loading,
+    }),
   },
   methods: {
     prettyPrice: value => value.toFixed(3),
