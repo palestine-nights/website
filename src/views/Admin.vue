@@ -77,42 +77,28 @@
       <v-progress-circular :size="70" :width="7" color="green" indeterminate></v-progress-circular>
     </v-layout>
 
-    <v-layout column align-center v-else-if="!errored && !loading && reservations.length == 0">
+    <v-layout column align-center v-else-if="reservations.length == 0">
       <h2 class="font-weight-light">No upcoming reservations</h2>
-    </v-layout>
-
-    <v-layout column align-center v-else-if="errored">
-      <h2 class="error--text font-weight-light">Sorry, try again later</h2>
     </v-layout>
   </v-container>
 </template>
 
 
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
   data() {
-    return {
-      reservations: [],
-      loading: true,
-      errored: false,
-    };
+    return {};
+  },
+  computed: {
+    ...mapState({
+      loading: state => state.reservationsStore.loading,
+      reservations: state => state.reservationsStore.reservations,
+    }),
   },
   mounted() {
-    // TODO: Show something in case of empty arrray.
-    // Get all upcoming reservations.
-    axios.get(`${this.$apiHost}/reservations`)
-      .then((response) => {
-        this.reservations = response.data;
-      })
-      .catch((error) => {
-        this.error = error;
-        this.errored = true;
-      })
-      .finally(() => {
-        this.loading = false;
-      });
+    this.$store.dispatch('reservationsStore/GET_RESERVATIONS');
   },
 };
 </script>

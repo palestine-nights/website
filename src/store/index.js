@@ -11,15 +11,14 @@ axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 import TablesStore from './modules/TablesStore';
 import MenuStore from './modules/MenuStore';
 import CategoriesStore from './modules/CategoriesStore';
-
-// import ReservationsStore from './modules/ReservationsStore'
+import ReservationsStore from './modules/ReservationsStore';
 
 const store = new Vuex.Store({
   modules: {
     tablesStore: TablesStore,
     menuStore: MenuStore,
     categoriesStore: CategoriesStore,
-    // reservations: ReservationsStore
+    reservationsStore: ReservationsStore,
   }
 })
 

@@ -1,8 +1,7 @@
 <template>
   <v-container>
-    <v-snackbar v-model="response.showBar" :color="response.color" top>
-      <span>{{ response.msg }}</span>
-      <v-btn flat @click="response.showBar = false">Close</v-btn>
+    <v-snackbar v-model="msg.show" :color="msg.color" top>
+      <span>{{ msg.text }}</span>
     </v-snackbar>
 
     <v-flex xs12 row class="text-xs-center mb-3">
@@ -106,7 +105,7 @@
           <v-select
             v-model="reservation.tableID"
             :color="form.theme"
-            :loading="response.loading"
+            :loading="loadingTables"
             :rules="[rules.required]"
             :item-text="table => table.id + '. ' + table.description"
             :items="tables"
@@ -155,7 +154,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
   data() {
@@ -164,12 +163,6 @@ export default {
         valid: false,
         theme: 'green',
       },
-      response: {
-        msg: null,
-        loading: true,
-        showBar: false,
-      },
-      tables: [],
       reservation: {
         date: null,
         time: null,
@@ -209,17 +202,14 @@ export default {
     };
   },
   mounted() {
-    axios.get(`${this.$apiHost}/tables`)
-      .then((response) => {
-        this.tables = response.data;
-      })
-      .catch((error) => {
-        this.response.color = 'error';
-        this.response.msg = error.response.data.error;
-      })
-      .finally(() => {
-        this.response.loading = false;
-      });
+    this.$store.dispatch('tablesStore/GET_TABLES');
+  },
+  computed: {
+    ...mapState({
+      tables: state => state.tablesStore.tables,
+      loadingTables: state => state.tablesStore.loading,
+      msg: state => state.reservationsStore.msg,
+    }),
   },
   methods: {
     submit() {
@@ -235,7 +225,7 @@ export default {
       ).toISOString();
 
       if (this.$refs.form.validate()) {
-        axios.post(`${this.$apiHost}/reservations`, {
+        this.$store.dispatch('reservationsStore/CREATE_RESERVATION', {
           full_name: this.reservation.name,
           email: this.reservation.email,
           table_id: this.reservation.tableID,
@@ -243,17 +233,6 @@ export default {
           phone: this.reservation.phone,
           guests: this.reservation.guests,
           duration: this.reservation.duration * 60000000000,
-        }).then((response) => {
-          this.response.reservation = response.data;
-          this.response.color = 'success';
-          this.response.msg = 'Your reservation was successfully created';
-          this.response.showBar = true;
-        }).catch((error) => {
-          this.response.msg = error.response.data.error;
-          this.response.color = 'error';
-          this.response.showBar = true;
-        }).finally(() => {
-          this.response.loading = false;
         });
       }
     },

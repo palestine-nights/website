@@ -2,7 +2,6 @@
   <v-container>
     <v-snackbar v-model="msg.show" :color="msg.color" top>
       <span>{{ msg.text }}</span>
-      <!-- <v-btn flat @click="this.$tablesStore.$store.commit('tablesStore/CLOSE_MSG')">Close</v-btn> -->
     </v-snackbar>
 
     <h1 class="font-weight-light">Tables</h1>
