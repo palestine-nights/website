@@ -17,6 +17,9 @@ export default {
     SET_RESERVATIONS: (state, payload) => {
       state.reservations = payload;
     },
+    SET_RESERVATION: (state, index, payload) => {
+      state.reservations[index] = payload;
+    },
     SET_LOADING: (state, payload) => {
       state.loading = payload;
     },
@@ -59,16 +62,36 @@ export default {
 
       return ReservationsAPI.createReservation(reservation)
         .then(reservation => {
-          console.log('MSG_SUCCESS');
           context.commit('MSG_SUCCESS', 'Your Reservation was successfully created.');
         })
         .catch(error => {
-          console.log('MSG_ERROR');
           context.commit('MSG_ERROR', error.response.data.error);
         })
         .finally(() => {
           context.commit('SET_LOADING', false);
         })
     },
+    APPROVE: (context, ID)=> {
+      context.commit('SET_LOADING', true);
+
+      return ReservationsAPI.Approve(ID)
+        .catch(error => {
+          context.commit('MSG_ERROR', error.response.data.error);
+        })
+        .finally(() => {
+          context.commit('SET_LOADING', false);
+        })
+    },
+    CANCEL: (context, ID)=> {
+      context.commit('SET_LOADING', true);
+
+      return ReservationsAPI.Cancel(ID)
+        .catch(error => {
+          context.commit('MSG_ERROR', error.response.data.error);
+        })
+        .finally(() => {
+          context.commit('SET_LOADING', false);
+        })
+    }
   },
 };

@@ -2,7 +2,7 @@
   <v-container>
     <h1 class="font-weight-light">Reservations</h1>
 
-    <v-content v-if="!loading && reservations.length > 0">
+    <v-content v-if="reservations.length > 0">
       <v-flex v-for="(reservation,id) in reservations" :key="id">
         <v-card class="my-1">
           <v-card-text>
@@ -20,7 +20,7 @@
                 </v-badge>
               </v-flex>
 
-              <v-flex md4 sm5 hidden-xs-only>
+              <v-flex hidden-xs-only sm5 md4>
                 <div>
                   <v-icon color="green" class="mr-2" small>email</v-icon>
                   <strong class="mr-1">Email:</strong>
@@ -38,7 +38,7 @@
                 </div>
               </v-flex>
 
-              <v-flex xs9 sm5 md4>
+              <v-flex xs8 sm4 md3>
                 <div>
                   <v-icon color="green" class="mr-2" small>access_time</v-icon>
                   <strong class="mr-1">Time:</strong>
@@ -62,20 +62,26 @@
                 </div>
               </v-flex>
 
-              <v-flex xs1 sm1 md1 text-xs-center>
-                <v-icon v-if="reservation.state == 'created'" color="grey">done</v-icon>
-                <v-icon v-else-if="reservation.state == 'approved'" color="green">done_all</v-icon>
-                <v-icon v-else-if="reservation.state == 'cancelled'" color="red">close</v-icon>
+              <v-flex xs2 sm2 md2>
+                <v-btn v-if="isCancelled(reservation.state)" disabled flat icon color="grey">
+                  <v-icon>clear</v-icon>
+                </v-btn>
+                <v-btn v-else flat icon color="red" @click="cancel(reservation)">
+                  <v-icon>clear</v-icon>
+                </v-btn>
+
+                <v-btn v-if="isApproved(reservation.state)" disabled flat icon color="grey">
+                  <v-icon>done</v-icon>
+                </v-btn>
+                <v-btn v-else flat icon color="green" @click="approve(reservation)">
+                  <v-icon>done</v-icon>
+                </v-btn>
               </v-flex>
             </v-layout>
           </v-card-text>
         </v-card>
       </v-flex>
     </v-content>
-
-    <v-layout column align-center v-else-if="loading">
-      <v-progress-circular :size="70" :width="7" color="green" indeterminate></v-progress-circular>
-    </v-layout>
 
     <v-layout column align-center v-else-if="reservations.length == 0">
       <h2 class="font-weight-light">No upcoming reservations</h2>
@@ -93,12 +99,32 @@ export default {
   },
   computed: {
     ...mapState({
-      loading: state => state.reservationsStore.loading,
       reservations: state => state.reservationsStore.reservations,
     }),
   },
   mounted() {
     this.$store.dispatch('reservationsStore/GET_RESERVATIONS');
+  },
+  methods: {
+    approve(reservation) {
+      this.$store.dispatch('reservationsStore/APPROVE', reservation.id).then(() => {
+        this.$store.dispatch('reservationsStore/GET_RESERVATIONS');
+      });
+    },
+    cancel(reservation) {
+      this.$store.dispatch('reservationsStore/CANCEL', reservation.id).then(() => {
+        this.$store.dispatch('reservationsStore/GET_RESERVATIONS');
+      });
+    },
+    isCancelled(obj) {
+      return obj === 'cancelled';
+    },
+    isCreated(obj) {
+      return obj === 'created';
+    },
+    isApproved(obj) {
+      return obj === 'approved';
+    },
   },
 };
 </script>
