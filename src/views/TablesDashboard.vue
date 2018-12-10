@@ -61,7 +61,7 @@
               </v-flex>
 
               <v-flex xs2 sm2 md2 class="text-xs-right">
-                <v-btn flat icon color="red" @click="deleteTable(id, table.id)">
+                <v-btn flat icon color="red" @click="deleteTable(table.id)">
                   <v-icon>clear</v-icon>
                 </v-btn>
               </v-flex>
@@ -108,7 +108,7 @@ export default {
         places: this.places,
       });
     },
-    deleteTable(i, ID) {
+    deleteTable(ID) {
       this.$store.dispatch('tablesStore/DELETE_TABLE', ID);
     },
   },
