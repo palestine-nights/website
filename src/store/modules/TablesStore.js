@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import TablesAPI from '@/services/api/RestaurantTables';
+import TablesAPI from '@/services/api/Tables';
 
 export default {
   namespaced: true,

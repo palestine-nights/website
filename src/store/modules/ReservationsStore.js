@@ -45,6 +45,7 @@ export default {
   actions: {
     GET_RESERVATIONS: (context) => {
       context.commit('SET_LOADING', true);
+      console.log(ReservationsAPI)
 
       return ReservationsAPI.getReservations()
         .then(reservations => {
@@ -74,7 +75,7 @@ export default {
     APPROVE: (context, ID)=> {
       context.commit('SET_LOADING', true);
 
-      return ReservationsAPI.Approve(ID)
+      return ReservationsAPI.approve(ID)
         .catch(error => {
           context.commit('MSG_ERROR', error.response.data.error);
         })
@@ -85,7 +86,7 @@ export default {
     CANCEL: (context, ID)=> {
       context.commit('SET_LOADING', true);
 
-      return ReservationsAPI.Cancel(ID)
+      return ReservationsAPI.cancel(ID)
         .catch(error => {
           context.commit('MSG_ERROR', error.response.data.error);
         })

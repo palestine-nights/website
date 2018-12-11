@@ -94,16 +94,11 @@
 import { mapState } from 'vuex';
 
 export default {
-  data() {
-    return {};
-  },
+  name: 'ReservationDashboard',
   computed: {
     ...mapState({
       reservations: state => state.reservationsStore.reservations,
     }),
-  },
-  mounted() {
-    this.$store.dispatch('reservationsStore/GET_RESERVATIONS');
   },
   methods: {
     approve(reservation) {
@@ -125,6 +120,9 @@ export default {
     isApproved(obj) {
       return obj === 'approved';
     },
+  },
+  mounted: () => {
+    this.$store.dispatch('reservationsStore/GET_RESERVATIONS');
   },
 };
 </script>

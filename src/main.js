@@ -45,6 +45,11 @@ Vue.prototype.$apiHost = process.env.VUE_APP_API_URL;
  */
 Vue.prototype.$ratingHost = process.env.VUE_APP_RATING_URL;
 
+/**
+ * VUE_APP_AUTH_URL - URL of running "Authentication" micro-service. By default equals http://localhost:5000.
+ */
+Vue.prototype.$authHost = process.env.VUE_APP_AUTH_URL;
+
 Vue.use(VueMoment, { moment });
 
 Vue.use(VueI18n);

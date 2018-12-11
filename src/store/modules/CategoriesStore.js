@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import MenuAPI from '@/services/api/Menu';
+import CategoriesAPI from '@/services/api/Menu';
 
 export default {
   namespaced: true,
@@ -43,7 +43,7 @@ export default {
     GET_CATEGORIES: (context) =>  {
       context.commit('SET_LOADING', true);
 
-      return MenuAPI.getCategories()
+      return CategoriesAPI.getCategories()
         .then(categories => {
           context.commit('SET_CATEGORIES', categories);
         })
