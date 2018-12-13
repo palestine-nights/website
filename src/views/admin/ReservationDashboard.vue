@@ -121,7 +121,7 @@ export default {
       return obj === 'approved';
     },
   },
-  mounted: () => {
+  mounted() {
     this.$store.dispatch('reservationsStore/GET_RESERVATIONS');
   },
 };
