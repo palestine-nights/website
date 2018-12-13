@@ -4,11 +4,33 @@
       <span>{{ msg.text }}</span>
     </v-snackbar>
 
-    <v-form>
-      <v-text-field v-model="username" label="Username" required></v-text-field>
-      <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
-      <v-btn class="mr-3" @click="login()" color="green">Login</v-btn>
-    </v-form>
+    <h2 class="text-xs-center green--text display-1 my-5">
+      Administrator
+    </h2>
+
+    <v-layout fill-height row wrap class="justify-center text-xs-center">
+      <v-flex xs12 sm8 md8>
+         <v-text-field solo
+          v-model="username"
+          append-icon="person"
+          :rules="[rules.required]"
+          label="Username"
+          counter
+        ></v-text-field>
+
+        <v-text-field solo
+          v-model="password"
+          :append-icon="show ? 'visibility_off' : 'visibility'"
+          :rules="[rules.required]"
+          :type="show ? 'text' : 'password'"
+          label="Password"
+          counter
+          @click:append="show = !show"
+        ></v-text-field>
+
+        <v-btn @click="login()" round large color="green">Sign In</v-btn>
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
@@ -21,6 +43,10 @@ export default {
     return {
       username: '',
       password: '',
+      show: false,
+      rules: {
+        required: value => !!value || 'Field is required.',
+      },
     };
   },
   computed: {
