@@ -53,6 +53,7 @@ jobs:
             echo "VUE_APP_GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}" >> .env.production
             echo "VUE_APP_GOOGLE_MAPS_PLACES_API_KEY=${GOOGLE_MAPS_PLACES_API_KEY}" >> .env.production
             echo "VUE_APP_API_URL=${API_URL}" >> .env.production
+            echo "VUE_APP_AUTH_URL=${AUTH_URL}" >> .env.production
             echo "VUE_APP_RATING_URL=${RATING_URL}" >> .env.production
       - run:
           name: Login in Dockerhub
