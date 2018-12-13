@@ -1,7 +1,6 @@
 /* eslint-disable */
 
 import MenuAPI from '@/services/api/Menu';
-import { resolve } from 'upath';
 
 export default {
   namespaced: true,

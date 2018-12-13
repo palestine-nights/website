@@ -33,13 +33,9 @@
 
 <script>
 import axios from 'axios';
-import MenuItem from '../components/MenuItem.vue';
 
 export default {
-  name: 'MenuCategory',
-  components: {
-    MenuItem,
-  },
+  name: 'Meal',
   mounted() {
     this.id = this.$route.params.id;
 

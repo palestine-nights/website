@@ -3,7 +3,6 @@
     <v-layout column>
       <v-snackbar v-model="msg.show" :color="msg.color" top>
         <span>{{ msg.text }}</span>
-        <!-- <v-btn flat @click="showBar = false">Close</v-btn> -->
       </v-snackbar>
 
       <v-form>
@@ -23,10 +22,9 @@
   </v-container>
 </template>
 
-
 <script>
 import { mapState } from 'vuex';
-import MealEditor from '../components/MealEditor.vue';
+import MealEditor from '../../components/MealEditor.vue';
 
 export default {
   name: 'CreateMenuItem',
