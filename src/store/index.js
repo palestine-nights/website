@@ -61,6 +61,12 @@ const store = new Vuex.Store({
           throw error;
         });
     },
+    LOGOUT: (context, payload) => {
+      localStorage.removeItem('token');
+      context.commit('SET_JWT', null);
+
+      return new Promise((resolve) => resolve());
+    },
   },
   modules: {
     tablesStore: TablesStore,
