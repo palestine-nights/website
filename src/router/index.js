@@ -4,6 +4,8 @@ import Router from 'vue-router';
 import Home from '../views/Home.vue';
 import Admin from '../views/admin/Admin.vue';
 import TablesDashboard from '../views/admin/TablesDashboard.vue';
+import ReservationDashboard from '../views/admin/ReservationDashboard.vue';
+
 import Reservation from '../views/Reservation.vue';
 import Categories from '../views/Categories.vue';
 import MenuCategory from '../views/MenuCategory.vue';
@@ -11,7 +13,6 @@ import Meal from '../views/Meal.vue';
 import EditMenuItem from '../views/admin/EditMenuItem.vue';
 import CreateMenuItem from '../views/admin/CreateMenuItem.vue';
 import Login from '../views/Login.vue';
-import ReservationDashboard from '../views/admin/ReservationDashboard.vue';
 
 import store from '../store';
 
@@ -21,7 +22,7 @@ const ifNotAuthenticated = (to, from, next) => {
     return;
   }
 
-  next('/');
+  next('/admin/reservations');
 };
 
 const ifAuthenticated = (to, from, next) => {
