@@ -11,6 +11,7 @@ import Meal from '../views/Meal.vue';
 import EditMenuItem from '../views/admin/EditMenuItem.vue';
 import CreateMenuItem from '../views/admin/CreateMenuItem.vue';
 import Login from '../views/Login.vue';
+import ReservationDashboard from '../views/admin/ReservationDashboard.vue';
 
 import store from '../store';
 
@@ -43,18 +44,6 @@ const router = new Router({
       name: 'home',
       path: '/',
       component: Home,
-    },
-    {
-      name: 'Dashboard',
-      path: '/dashboard',
-      component: Admin,
-      beforeEnter: ifAuthenticated,
-    },
-    {
-      name: 'Table Dashboard',
-      path: '/dashboard/tables',
-      component: TablesDashboard,
-      beforeEnter: ifAuthenticated,
     },
     {
       name: 'Reservation',
@@ -93,6 +82,24 @@ const router = new Router({
       path: '/login',
       component: Login,
       beforeEnter: ifNotAuthenticated,
+    },
+    {
+      name: 'Dashboard',
+      path: '/admin',
+      component: Admin,
+      beforeEnter: ifAuthenticated,
+      children: [
+        {
+          name: 'Table Dashboard',
+          path: 'tables',
+          component: TablesDashboard,
+        },
+        {
+          name: 'Reservation Dashboard',
+          path: 'reservations',
+          component: ReservationDashboard,
+        },
+      ],
     },
     {
       path: '*',
