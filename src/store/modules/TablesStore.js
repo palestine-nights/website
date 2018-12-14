@@ -61,7 +61,7 @@ export default {
           context.commit('SET_TABLES', tables);
         })
         .catch(error => {
-          context.commit('MSG_ERROR', error.response.data);
+          context.commit('MSG_ERROR', error.response.data.error);
         })
         .finally(() => {
           context.commit('SET_LOADING', false);
@@ -74,17 +74,17 @@ export default {
           context.commit('MSG_SUCCESS', `Table with ID ${table.id} was successfully created.`);
         })
         .catch(error => {
-          context.commit('MSG_ERROR', error.response.data);
+          context.commit('MSG_ERROR', error.response.data.error);
         })
     },
     DELETE_TABLE: (context, ID) => {
       return TablesAPI.deleteTable(ID)
         .then(() => {
           context.commit('REMOVE_TABLE', ID);
-          context.commit('MSG_SUCCESS', `Table with ID ${table.id} was successfully removed.`);
+          context.commit('MSG_SUCCESS', `Table with ID ${ID} was successfully removed.`);
         })
         .catch(error => {
-          context.commit('MSG_ERROR', error.response.data);
+          context.commit('MSG_ERROR', error.response.data.error);
         })
     },
   },

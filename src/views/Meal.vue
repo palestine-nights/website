@@ -1,20 +1,26 @@
 <template>
   <v-container>
     <v-content v-if="!loading" column class="text-xs-center">
-      <h2 class="display-2 text-xs-center font-weight-light green--text my-2">{{ meal.name }}</h2>
+      <h2 class="display-2 text-xs-center font-weight-light green--text my-2">
+        {{ menuItem.name }}
+      </h2>
 
-      <v-img :src="meal.image_url" aspect-ratio="3"></v-img>
+      <v-img :src="menuItem.image_url" aspect-ratio="3"></v-img>
 
-      <div v-if="meal.description" class="title text-xs-center grey--text font-weight-thin my-2">
-        <span>{{ prettyPrice(meal.price) }} BHD</span>
+      <div
+        v-if="menuItem.description"
+        class="title text-xs-center grey--text font-weight-thin my-2"
+      >
+        <span>{{ prettyPrice(menuItem.price) }} BHD</span>
       </div>
 
       <div
-        v-if="meal.description"
+        v-if="menuItem.description"
         class="title text-xs-center font-weight-thin"
-      >{{ meal.description }}</div>
+      >{{ menuItem.description }}</div>
 
-      <v-btn class="my-4"
+      <v-btn
+        class="mt-3"
         v-if="isAuthenticated()"
         color="orange"
         round
@@ -26,10 +32,6 @@
       <v-progress-circular :size="70" :width="7" color="green" indeterminate></v-progress-circular>
     </v-layout>
 
-    <v-layout v-else-if="!errored && !loading && items.length == 0" column align-center>
-      <h2 class="font-weight-light">Invalid Meal ID.</h2>
-    </v-layout>
-
     <v-layout v-else-if="errored" column align-center>
       <h2 class="error--text font-weight-light">Sorry, try again later</h2>
     </v-layout>
@@ -37,33 +39,28 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Meal',
   mounted() {
     this.id = this.$route.params.id;
 
-    axios
-      .get(`${this.$apiHost}/menu/${this.id}`)
-      .then((response) => {
-        this.meal = response.data;
-      })
-      .catch((error) => {
-        this.errMsg = error.response.data.error;
-        this.errored = true;
-      })
-      .finally(() => {
-        this.loading = false;
+    this.$store
+      .dispatch('menuStore/GET_MENU_ITEM', this.$route.params.id)
+      .then((menuItem) => {
+        this.menuItem = menuItem;
       });
   },
   data() {
     return {
-      meal: {},
-      errMsg: '',
-      errored: false,
-      loading: true,
+      menuItem: {},
     };
+  },
+  computed: {
+    ...mapState({
+      loading: state => state.menuStore.loading,
+    }),
   },
   methods: {
     prettyPrice: value => value.toFixed(3),
@@ -77,9 +74,5 @@ export default {
   background-color: darkgreen !important;
   opacity: 0.5;
   border-color: transparent !important;
-}
-
-.menu-card-price-hover > .price {
-  background-color: aqua;
 }
 </style>

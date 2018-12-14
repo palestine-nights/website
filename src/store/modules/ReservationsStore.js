@@ -45,18 +45,21 @@ export default {
   actions: {
     GET_RESERVATIONS: (context) => {
       context.commit('SET_LOADING', true);
-      console.log(ReservationsAPI)
 
-      return ReservationsAPI.getReservations()
+      return new Promise(function(resolve, reject) {
+        ReservationsAPI.getReservations()
         .then(reservations => {
           context.commit('SET_RESERVATIONS', reservations);
+          resolve(reservations)
         })
         .catch(error => {
           context.commit('MSG_ERROR', error.response.data.error);
+          reject(error)
         })
         .finally(() => {
           context.commit('SET_LOADING', false);
         })
+      });
     },
     CREATE_RESERVATION: (context, reservation) => {
       context.commit('SET_LOADING', true);
