@@ -10,7 +10,7 @@
           <template slot="bottom">
           <v-flex xs12 row class="text-xs-center">
             <v-dialog v-model="deleteMealDialog" width="500">
-              <v-btn slot="activator" color="error" dark>
+              <v-btn large round slot="activator" color="error" dark>
                 Delete
               </v-btn>
 
@@ -26,17 +26,17 @@
                 <v-divider></v-divider>
 
                 <v-card-actions class="text-xs-center">
-                  <v-btn color="green" flat @click="deleteMealDialog = false">
+                  <v-btn round color="green" flat @click="deleteMealDialog = false">
                     No
                   </v-btn>
                   <v-spacer></v-spacer>
-                  <v-btn color="error" flat @click="deleteMeal()">
+                  <v-btn round color="error" flat @click="deleteMeal()">
                     Delete
                   </v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
-            <v-btn class="mr-3" @click="saveMeal()" color="green">OK</v-btn>
+            <v-btn large round class="mr-3" @click="saveMeal()" color="green">OK</v-btn>
           </v-flex>
           </template>
         </meal-editor>
