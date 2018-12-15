@@ -73,6 +73,11 @@ export default {
           icon: 'room_service',
           link: '/admin/reservations',
         },
+        {
+          title: 'Menu',
+          icon: 'restaurant',
+          link: '/admin/menu',
+        },
       ],
       mini: true,
       right: null,
