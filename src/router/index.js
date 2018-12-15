@@ -5,6 +5,7 @@ import Home from '../views/Home.vue';
 import Admin from '../views/admin/Admin.vue';
 import TablesDashboard from '../views/admin/TablesDashboard.vue';
 import ReservationDashboard from '../views/admin/ReservationDashboard.vue';
+import MenuDashboard from '../views/admin/MenuDashboard.vue';
 
 import Reservation from '../views/Reservation.vue';
 import Categories from '../views/Categories.vue';
@@ -99,6 +100,11 @@ const router = new Router({
           name: 'Reservation Dashboard',
           path: 'reservations',
           component: ReservationDashboard,
+        },
+        {
+          name: 'Menu Dashboard',
+          path: 'menu',
+          component: MenuDashboard,
         },
       ],
     },

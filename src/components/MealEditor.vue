@@ -5,6 +5,11 @@
     </v-flex>
 
     <v-flex xs12 sm12 md12>
+      <v-switch v-model="meal.active" label="Active" color="green">
+      </v-switch>
+    </v-flex>
+
+    <v-flex xs12 sm12 md12>
       <v-textarea v-model="meal.description" label="Description"></v-textarea>
     </v-flex>
 

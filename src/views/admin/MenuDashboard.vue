@@ -1,7 +1,12 @@
 <template>
   <v-content>
       <v-container>
-        <v-layout v-if="!loading && activeItems.length > 0" row wrap >
+        <v-layout v-if="!loading && activeItems.length > 0" row wrap>
+          <v-flex xs12 sm12 md12>
+            <v-switch v-model="active" label="Active" color="green">
+            </v-switch>
+          </v-flex>
+
           <v-flex row wrapmd6 xl3 lg4 sm6 xs12 v-for="(item,key) in activeItems" :key="key">
             <menu-item class="with-bottom-offset"
                       :title="item.name"
@@ -27,19 +32,21 @@
 
 <script>
 import { mapState } from 'vuex';
-import MenuItem from '../components/MenuItem.vue';
+import MenuItem from '../../components/MenuItem.vue';
 
 export default {
-  name: 'MenuCategory',
+  name: 'MenuDashboard',
   components: {
     MenuItem,
   },
   mounted() {
     this.category_id = this.$route.params.category_id;
-    this.$store.dispatch('menuStore/GET_CATEGORY_MENU_ITEMS', this.category_id);
+    this.$store.dispatch('menuStore/GET_MENU_ITEMS');
   },
   data() {
-    return {};
+    return {
+      active: false,
+    };
   },
   computed: {
     ...mapState({
@@ -47,7 +54,7 @@ export default {
       loading: state => state.menuStore.loading,
     }),
     activeItems() {
-      return this.menuItems.filter(item => item.active);
+      return this.menuItems.filter(item => item.active === this.active);
     },
   },
   methods: {
@@ -61,9 +68,5 @@ export default {
   background-color: darkgreen!important;
   opacity: 0.5;
   border-color: transparent!important;
-}
-
-.menu-card-price-hover > .price {
-  background-color: aqua;
 }
 </style>

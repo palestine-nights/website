@@ -40,6 +40,20 @@ export default {
     },
   },
   actions: {
+    GET_MENU_ITEMS: (context) => {
+      context.commit('SET_LOADING', true);
+
+      return MenuAPI.getMenuItems()
+        .then(menuItems => {
+          context.commit('SET_MENU_ITEMS', menuItems);
+        })
+        .catch(error => {
+          context.commit('MSG_ERROR', error.response.data.error);
+        })
+        .finally(() => {
+          context.commit('SET_LOADING', false);
+        })
+    },
     GET_CATEGORY_MENU_ITEMS: (context, ID) => {
       context.commit('SET_LOADING', true);
 
