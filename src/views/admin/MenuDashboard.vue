@@ -1,13 +1,13 @@
 <template>
   <v-content>
       <v-container>
-        <v-layout v-if="!loading && activeItems.length > 0" row wrap>
+        <v-layout v-if="!loading" row wrap>
           <v-flex xs12 sm12 md12>
             <v-switch v-model="active" label="Active" color="green">
             </v-switch>
           </v-flex>
 
-          <v-flex row wrapmd6 xl3 lg4 sm6 xs12 v-for="(item,key) in activeItems" :key="key">
+          <v-flex row wrapmd6 xl3 lg4 sm6 xs12 v-for="(item,key) in items" :key="key">
             <menu-item class="with-bottom-offset"
                       :title="item.name"
                       :price="prettyPrice(item.price)"
@@ -23,8 +23,8 @@
           </v-progress-circular>
         </v-layout>
 
-        <v-layout v-else-if="!loading && activeItems.length == 0" column align-center>
-          <h2 class="font-weight-light">No meals for specified category.</h2>
+        <v-layout v-else-if="!loading" column align-center>
+          <h2 class="font-weight-light">No meals</h2>
         </v-layout>
       </v-container>
   </v-content>
@@ -53,7 +53,7 @@ export default {
       menuItems: state => state.menuStore.menuItems,
       loading: state => state.menuStore.loading,
     }),
-    activeItems() {
+    items() {
       return this.menuItems.filter(item => item.active === this.active);
     },
   },
