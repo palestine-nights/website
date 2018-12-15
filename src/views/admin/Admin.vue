@@ -4,6 +4,11 @@
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Dashboard</v-toolbar-title>
       <v-spacer></v-spacer>
+
+      <v-badge color="orange" overlap>
+        <span class="caption" slot="badge">{{ pending }}</span>
+        <v-icon class="green--text">notifications_active</v-icon>
+      </v-badge>
       <v-toolbar-items>
         <v-btn @click="logout()" flat>Logout</v-btn>
       </v-toolbar-items>
@@ -46,11 +51,12 @@
     </v-navigation-drawer>
 
     <router-view></router-view>
-
   </v-content>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'Dashboard',
   data() {
@@ -67,15 +73,21 @@ export default {
           icon: 'room_service',
           link: '/admin/reservations',
         },
-        {
-          title: 'Menu',
-          icon: 'restaurant',
-          link: '/admin/menu',
-        },
       ],
       mini: true,
       right: null,
     };
+  },
+  computed: {
+    ...mapState({
+      reservations: state => state.reservationsStore.reservations,
+    }),
+    pending() {
+      return this.reservations.filter(r => r.state === 'created').length;
+    },
+  },
+  mounted() {
+    this.$store.dispatch('reservationsStore/GET_RESERVATIONS');
   },
   methods: {
     logout() {

@@ -10,7 +10,7 @@ const Tables = {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
-    });
+    }).then(response => response.data);
 
     return result;
   },
