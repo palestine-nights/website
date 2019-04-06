@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     prettyPrice: value => value.toFixed(3),
-    isAuthenticated: () => !!localStorage.getItem('token'),
+    isAuthenticated: () => !!sessionStorage.getItem('token'),
   },
 };
 </script>

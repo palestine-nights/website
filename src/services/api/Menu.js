@@ -27,7 +27,7 @@ const Menu = {
   deleteMenuItem: (ID) => {
     const result = axios.delete(`/menu/${ID}`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
       },
     });
 
@@ -40,7 +40,7 @@ const Menu = {
   createMenuItem: (menuItem) => {
     const result = axios.post('/menu', menuItem, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
       },
     }).then(response => response.data);
 
@@ -53,7 +53,7 @@ const Menu = {
   updateMenuItem: (menuItem) => {
     const result = axios.put(`/menu/${menuItem.id}`, menuItem, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
       },
     }).then(response => response.data);
 

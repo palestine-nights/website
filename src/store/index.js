@@ -17,7 +17,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    token: localStorage.getItem('token') || '',
+    token: sessionStorage.getItem('token') || '',
     msg: {
       text: '',
       color: '',
@@ -53,7 +53,7 @@ const store = new Vuex.Store({
       return Auth.login(authUrl, payload.username, payload.password)
         .then(response => {
           context.commit('SET_JWT', response.token);
-          localStorage.setItem('token', response.token);
+          sessionStorage.setItem('token', response.token);
           return response;
         })
         .catch(error => {
@@ -62,7 +62,7 @@ const store = new Vuex.Store({
         });
     },
     LOGOUT: (context, payload) => {
-      localStorage.removeItem('token');
+      sessionStorage.removeItem('token');
       context.commit('SET_JWT', null);
 
       return new Promise((resolve) => resolve());
