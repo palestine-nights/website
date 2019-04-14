@@ -7,7 +7,6 @@ import axios from 'axios';
 import TablesStore from './modules/TablesStore';
 import MenuStore from './modules/MenuStore';
 import CategoriesStore from './modules/CategoriesStore';
-import ReservationsStore from './modules/ReservationsStore';
 
 import Auth from '@/services/api/Auth';
 
@@ -72,7 +71,6 @@ const store = new Vuex.Store({
     tablesStore: TablesStore,
     menuStore: MenuStore,
     categoriesStore: CategoriesStore,
-    reservationsStore: ReservationsStore,
   }
 })
 

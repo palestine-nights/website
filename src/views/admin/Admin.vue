@@ -69,11 +69,6 @@ export default {
           link: '/admin/tables',
         },
         {
-          title: 'Reservations',
-          icon: 'room_service',
-          link: '/admin/reservations',
-        },
-        {
           title: 'Menu',
           icon: 'restaurant',
           link: '/admin/menu',
@@ -82,17 +77,6 @@ export default {
       mini: true,
       right: null,
     };
-  },
-  computed: {
-    ...mapState({
-      reservations: state => state.reservationsStore.reservations,
-    }),
-    pending() {
-      return this.reservations.filter(r => r.state === 'created').length;
-    },
-  },
-  mounted() {
-    this.$store.dispatch('reservationsStore/GET_RESERVATIONS');
   },
   methods: {
     logout() {

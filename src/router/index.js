@@ -4,10 +4,8 @@ import Router from 'vue-router';
 import Home from '../views/Home.vue';
 import Admin from '../views/admin/Admin.vue';
 import TablesDashboard from '../views/admin/TablesDashboard.vue';
-import ReservationDashboard from '../views/admin/ReservationDashboard.vue';
 import MenuDashboard from '../views/admin/MenuDashboard.vue';
 
-import Reservation from '../views/Reservation.vue';
 import Categories from '../views/Categories.vue';
 import MenuCategory from '../views/MenuCategory.vue';
 import Meal from '../views/Meal.vue';
@@ -23,7 +21,7 @@ const ifNotAuthenticated = (to, from, next) => {
     return;
   }
 
-  next('/admin/reservations');
+  next('/admin/menu');
 };
 
 const ifAuthenticated = (to, from, next) => {
@@ -46,11 +44,6 @@ const router = new Router({
       name: 'home',
       path: '/',
       component: Home,
-    },
-    {
-      name: 'Reservation',
-      path: '/reservations/new',
-      component: Reservation,
     },
     {
       name: 'Menu',
@@ -95,11 +88,6 @@ const router = new Router({
           name: 'Table Dashboard',
           path: 'tables',
           component: TablesDashboard,
-        },
-        {
-          name: 'Reservation Dashboard',
-          path: 'reservations',
-          component: ReservationDashboard,
         },
         {
           name: 'Menu Dashboard',

@@ -59,7 +59,7 @@ export default {
     login() {
       const { username, password } = this;
       this.$store.dispatch('LOGIN', { username, password }).then(() => {
-        this.$router.push('/admin/reservations');
+        this.$router.push('/admin/menu');
       });
     },
   },
