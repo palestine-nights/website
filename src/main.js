@@ -20,6 +20,8 @@ import store from './store';
 
 Vue.config.productionTip = false;
 
+const env = process.env.NODE_ENV;
+
 /**
  * VUE_APP_GOOGLE_ANALYTICS_ID - ID of your Google Analytics project.
  */
@@ -62,13 +64,15 @@ Vue.use(Vuetify, {
   iconfont: 'md',
 });
 
-Vue.use(VueAnalytics, {
-  id: analyticsID,
-  router,
-  autoTracking: {
-    exception: true,
-  },
-});
+if (env === 'production') {
+  Vue.use(VueAnalytics, {
+    id: analyticsID,
+    router,
+    autoTracking: {
+      exception: true,
+    },
+  });
+}
 
 const messages = {
   en: EngLocale,

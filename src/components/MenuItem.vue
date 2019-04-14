@@ -8,7 +8,7 @@
   </div>
 
     <v-card-title class="justify-center">
-      <div class="headline text-xs-center font-weight-regular my-2">{{ title }}</div>
+      <div class="headline text-xs-center font-weight-regular my-2 text-truncate">{{ title }}</div>
       <div v-if="description" class="font-italic font-weight-light">{{ description }}</div>
     </v-card-title>
   </v-card>
@@ -22,7 +22,7 @@
     </div>
 
     <v-card-title class="justify-center">
-      <div class="headline text-xs-center font-weight-regular my-2">{{ title }}</div>
+      <div class="headline text-xs-center font-weight-regular my-2 text-truncate">{{ title }}</div>
       <div v-if="description" class="font-italic font-weight-light">{{ description }}</div>
     </v-card-title>
   </v-card>

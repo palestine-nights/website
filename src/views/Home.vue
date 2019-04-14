@@ -4,9 +4,6 @@
       <v-btn round flat :to="{ name: 'Menu' }">
         <span class="headline">Menu</span>
       </v-btn>
-      <v-btn round flat :to="{ name: 'Reservation' }">
-        <span class="headline">Reserve</span>
-      </v-btn>
     </v-toolbar>
     <section>
       <parallax-bar image="./background.jpg"/>
