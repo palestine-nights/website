@@ -78,10 +78,7 @@ jobs:
       - run:
           name: Deploy to DigitalOcean
           command: |
-            ssh root@139.59.41.7 -- "cd platform && \
-                                     docker-compose down && \
-                                     docker-compose pull && \
-                                     docker-compose up -d"
+            ssh root@139.59.41.7 -- "cd platform && docker-compose up -Vd website"
 
 workflows:
   version: 2
